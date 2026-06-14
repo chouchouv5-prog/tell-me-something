@@ -1,24 +1,16 @@
 {{ define "main" }}
 <div style="max-width:500px; margin:60px auto; text-align:center; font-family:sans-serif;">
-  <h1>📩 Dis-moi quelque chose</h1>
-  <p style="color:gray;">Anonyme. Personne ne saura que c'est toi.</p>
+  <h1>👁️ Tell Me Something</h1>
+  <p style="color:gray; margin:16px 0;">Reçois des messages anonymes de n'importe qui !</p>
 
-  <form action="https://formspree.io/f/mykabwke" method="POST"
-        style="display:flex; flex-direction:column; gap:14px; margin-top:30px;">
+  <a href="/app/" style="display:block; padding:16px; background:#6366f1; color:white;
+    border-radius:12px; font-size:18px; font-weight:600; text-decoration:none; margin-bottom:14px;">
+    🚀 Créer mon compte gratuit
+  </a>
 
-    <textarea name="message" rows="5" placeholder="Écris ton message ici..."
-      style="padding:14px; border-radius:10px; border:1px solid #ddd;
-             font-size:15px; resize:none;"></textarea>
-
-    <button type="submit"
-      style="padding:14px; background:#111; color:white;
-             border:none; border-radius:10px; font-size:16px; cursor:pointer;">
-      Envoyer anonymement 🚀
-    </button>
-
-  </form>
-  <p style="margin-top:20px; font-size:12px; color:#aaa;">
-    Ton identité n'est jamais révélée.
-  </p>
+  <a href="/app/u?u=demo" style="display:block; padding:16px; background:#1a1a1a; color:white;
+    border-radius:12px; font-size:16px; text-decoration:none;">
+    📩 Envoyer un message anonyme
+  </a>
 </div>
 {{ end }}
