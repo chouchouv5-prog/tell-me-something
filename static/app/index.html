@@ -6,29 +6,31 @@
 <title>Tell Me Something</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: 'Segoe UI', sans-serif; background:#0a0a0a; color:#fff; min-height:100vh; }
-  .container { max-width:500px; margin:0 auto; padding:40px 20px; }
-  h1 { font-size:2rem; text-align:center; margin-bottom:10px; }
-  .subtitle { text-align:center; color:#888; margin-bottom:40px; }
-  .card { background:#1a1a1a; border-radius:16px; padding:30px; margin-bottom:20px; }
-  input, textarea { width:100%; padding:14px; background:#2a2a2a; border:1px solid #333;
-    border-radius:10px; color:#fff; font-size:15px; margin-bottom:14px; outline:none; }
-  input:focus, textarea:focus { border-color:#6366f1; }
-  button { width:100%; padding:14px; background:#6366f1; color:#fff; border:none;
-    border-radius:10px; font-size:16px; cursor:pointer; font-weight:600; }
-  button:hover { background:#4f46e5; }
-  .tab { display:flex; gap:10px; margin-bottom:20px; }
-  .tab button { background:#1a1a1a; }
-  .tab button.active { background:#6366f1; }
-  .msg { padding:14px; background:#2a2a2a; border-radius:10px; margin-bottom:10px; }
-  .msg-time { font-size:11px; color:#666; margin-top:6px; }
-  .hidden { display:none; }
-  .alert { padding:12px; border-radius:8px; margin-bottom:14px; font-size:14px; }
-  .alert-success { background:#064e3b; color:#6ee7b7; }
-  .alert-error { background:#450a0a; color:#fca5a5; }
-  .link-box { background:#2a2a2a; padding:14px; border-radius:10px; 
-    word-break:break-all; font-size:13px; color:#6366f1; margin-bottom:14px; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI', sans-serif; background:#0a0a0a; color:#fff; min-height:100vh; }
+.container { max-width:500px; margin:0 auto; padding:40px 20px; }
+h1 { font-size:2rem; text-align:center; margin-bottom:10px; }
+.subtitle { text-align:center; color:#888; margin-bottom:40px; }
+.card { background:#1a1a1a; border-radius:16px; padding:30px; margin-bottom:20px; }
+.input-wrap { position:relative; margin-bottom:14px; }
+.input-wrap input { width:100%; padding:14px 44px 14px 14px; background:#2a2a2a; border:1px solid #333; border-radius:10px; color:#fff; font-size:15px; outline:none; }
+.input-wrap input:focus { border-color:#6366f1; }
+.input-wrap .eye { position:absolute; right:14px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:18px; }
+input[type="text"], input[type="email"] { width:100%; padding:14px; background:#2a2a2a; border:1px solid #333; border-radius:10px; color:#fff; font-size:15px; margin-bottom:14px; outline:none; }
+input[type="text"]:focus, input[type="email"]:focus { border-color:#6366f1; }
+button { width:100%; padding:14px; background:#6366f1; color:#fff; border:none; border-radius:10px; font-size:16px; cursor:pointer; font-weight:600; margin-top:4px; }
+button:hover { background:#4f46e5; }
+.tab { display:flex; gap:10px; margin-bottom:20px; }
+.tab button { background:#1a1a1a; margin-top:0; }
+.tab button.active { background:#6366f1; }
+.msg { padding:14px; background:#2a2a2a; border-radius:10px; margin-bottom:10px; }
+.msg-time { font-size:11px; color:#666; margin-top:6px; }
+.hidden { display:none; }
+.alert { padding:12px; border-radius:8px; margin-bottom:14px; font-size:14px; }
+.alert-success { background:#064e3b; color:#6ee7b7; }
+.alert-error { background:#450a0a; color:#fca5a5; }
+.link-box { background:#2a2a2a; padding:14px; border-radius:10px; word-break:break-all; font-size:13px; color:#6366f1; margin-bottom:14px; }
+.logout-btn { background:#333; margin-top:10px; }
 </style>
 </head>
 <body>
@@ -36,7 +38,6 @@
   <h1>👁️ Tell Me Something</h1>
   <p class="subtitle">Des messages anonymes, pour toi.</p>
 
-  <!-- TABS -->
   <div class="tab">
     <button class="active" onclick="showTab('home')">Accueil</button>
     <button onclick="showTab('signup')">Inscription</button>
@@ -47,12 +48,13 @@
   <!-- HOME -->
   <div id="home" class="card">
     <h2 style="margin-bottom:10px;">Comment ça marche ?</h2>
-    <p style="color:#888; line-height:1.7;">
-      1. Crée un compte gratuitement<br>
-      2. Obtiens ton lien unique<br>
-      3. Partage-le sur X, Instagram...<br>
-      4. Reçois des messages anonymes 🎉
+    <p style="color:#888; line-height:1.8;">
+      1️⃣ Crée un compte gratuitement<br>
+      2️⃣ Obtiens ton lien unique<br>
+      3️⃣ Partage-le sur X, Instagram...<br>
+      4️⃣ Reçois des messages anonymes 🎉
     </p>
+    <button onclick="showTab('signup')" style="margin-top:20px;">Créer mon compte 🚀</button>
   </div>
 
   <!-- INSCRIPTION -->
@@ -61,7 +63,10 @@
     <div id="signupAlert"></div>
     <input type="text" id="signupUsername" placeholder="Nom d'utilisateur (ex: sarah)" />
     <input type="email" id="signupEmail" placeholder="Email" />
-    <input type="password" id="signupPassword" placeholder="Mot de passe" />
+    <div class="input-wrap">
+      <input type="password" id="signupPassword" placeholder="Mot de passe" />
+      <span class="eye" onclick="togglePass('signupPassword')">👁️</span>
+    </div>
     <button onclick="signup()">S'inscrire</button>
   </div>
 
@@ -70,7 +75,10 @@
     <h2 style="margin-bottom:20px;">Connexion</h2>
     <div id="loginAlert"></div>
     <input type="email" id="loginEmail" placeholder="Email" />
-    <input type="password" id="loginPassword" placeholder="Mot de passe" />
+    <div class="input-wrap">
+      <input type="password" id="loginPassword" placeholder="Mot de passe" />
+      <span class="eye" onclick="togglePass('loginPassword')">👁️</span>
+    </div>
     <button onclick="login()">Se connecter</button>
   </div>
 
@@ -79,13 +87,13 @@
     <div class="card">
       <h2 style="margin-bottom:10px;">🔗 Ton lien unique</h2>
       <div class="link-box" id="myLink"></div>
-      <button onclick="copyLink()">Copier le lien</button>
+      <button onclick="copyLink()">📋 Copier le lien</button>
     </div>
     <div class="card">
       <h2 style="margin-bottom:16px;">📩 Mes messages</h2>
       <div id="messagesList"><p style="color:#666;">Aucun message pour l'instant.</p></div>
     </div>
-    <button onclick="logout()" style="background:#333;">Se déconnecter</button>
+    <button class="logout-btn" onclick="logout()">Se déconnecter</button>
   </div>
 </div>
 
@@ -96,32 +104,48 @@ const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 let currentUser = null;
 
+function togglePass(id) {
+  const input = document.getElementById(id);
+  input.type = input.type === 'password' ? 'text' : 'password';
+}
+
 function showTab(tab) {
   ['home','signup','login','inbox'].forEach(t => {
     document.getElementById(t).classList.add('hidden');
   });
   document.getElementById(tab).classList.remove('hidden');
-  document.querySelectorAll('.tab button').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab button:not(#inboxBtn)').forEach(b => b.classList.remove('active'));
 }
 
 async function signup() {
   const username = document.getElementById('signupUsername').value.trim().toLowerCase();
   const email = document.getElementById('signupEmail').value.trim();
   const password = document.getElementById('signupPassword').value;
-  const alert = document.getElementById('signupAlert');
+  const alertEl = document.getElementById('signupAlert');
 
   if (!username || !email || !password) {
-    alert.innerHTML = '<div class="alert alert-error">Remplis tous les champs !</div>';
+    alertEl.innerHTML = '<div class="alert alert-error">Remplis tous les champs !</div>';
+    return;
+  }
+  if (password.length < 6) {
+    alertEl.innerHTML = '<div class="alert alert-error">Le mot de passe doit avoir au moins 6 caractères !</div>';
     return;
   }
 
   const { error: authError } = await sb.auth.signUp({ email, password });
-  if (authError) { alert.innerHTML = `<div class="alert alert-error">${authError.message}</div>`; return; }
+  if (authError) {
+    alertEl.innerHTML = `<div class="alert alert-error">${authError.message}</div>`;
+    return;
+  }
 
   const { error: profileError } = await sb.from('profiles').insert({ username, email });
-  if (profileError) { alert.innerHTML = `<div class="alert alert-error">Nom d'utilisateur déjà pris !</div>`; return; }
+  if (profileError) {
+    alertEl.innerHTML = '<div class="alert alert-error">Nom d\'utilisateur déjà pris !</div>';
+    return;
+  }
 
-  alert.innerHTML = '<div class="alert alert-success">Compte créé ! Connecte-toi maintenant.</div>';
+  currentUser = username;
+  showInbox();
 }
 
 async function login() {
@@ -129,8 +153,11 @@ async function login() {
   const password = document.getElementById('loginPassword').value;
   const alertEl = document.getElementById('loginAlert');
 
-  const { data, error } = await sb.auth.signInWithPassword({ email, password });
-  if (error) { alertEl.innerHTML = `<div class="alert alert-error">Email ou mot de passe incorrect.</div>`; return; }
+  const { error } = await sb.auth.signInWithPassword({ email, password });
+  if (error) {
+    alertEl.innerHTML = '<div class="alert alert-error">Email ou mot de passe incorrect.</div>';
+    return;
+  }
 
   const { data: profile } = await sb.from('profiles').select('username').eq('email', email).single();
   if (profile) {
@@ -140,17 +167,22 @@ async function login() {
 }
 
 async function showInbox() {
-  showTab('inbox');
   document.getElementById('inboxBtn').classList.remove('hidden');
-  const baseUrl = window.location.origin + '/u/';
+  showTab('inbox');
+  const baseUrl = window.location.origin + '/app/u?u=';
   document.getElementById('myLink').textContent = baseUrl + currentUser;
   await loadMessages();
 }
 
 async function loadMessages() {
-  const { data } = await sb.from('messages').select('*').eq('recipient_username', currentUser).order('created_at', { ascending: false });
+  const { data } = await sb.from('messages').select('*')
+    .eq('recipient_username', currentUser)
+    .order('created_at', { ascending: false });
   const list = document.getElementById('messagesList');
-  if (!data || data.length === 0) { list.innerHTML = '<p style="color:#666;">Aucun message pour l\'instant.</p>'; return; }
+  if (!data || data.length === 0) {
+    list.innerHTML = '<p style="color:#666;">Aucun message pour l\'instant.</p>';
+    return;
+  }
   list.innerHTML = data.map(m => `
     <div class="msg">
       <p>${m.content}</p>
@@ -162,7 +194,7 @@ async function loadMessages() {
 function copyLink() {
   const link = document.getElementById('myLink').textContent;
   navigator.clipboard.writeText(link);
-  alert('Lien copié !');
+  alert('✅ Lien copié !');
 }
 
 async function logout() {
