@@ -1,0 +1,24 @@
+{{ define "main" }}
+<div style="max-width:500px; margin:60px auto; text-align:center; font-family:sans-serif;">
+  <h1>📩 Dis-moi quelque chose</h1>
+  <p style="color:gray;">Anonyme. Personne ne saura que c'est toi.</p>
+
+  <form action="https://formspree.io/f/mykabwke" method="POST"
+        style="display:flex; flex-direction:column; gap:14px; margin-top:30px;">
+
+    <textarea name="message" rows="5" placeholder="Écris ton message ici..."
+      style="padding:14px; border-radius:10px; border:1px solid #ddd;
+             font-size:15px; resize:none;"></textarea>
+
+    <button type="submit"
+      style="padding:14px; background:#111; color:white;
+             border:none; border-radius:10px; font-size:16px; cursor:pointer;">
+      Envoyer anonymement 🚀
+    </button>
+
+  </form>
+  <p style="margin-top:20px; font-size:12px; color:#aaa;">
+    Ton identité n'est jamais révélée.
+  </p>
+</div>
+{{ end }}

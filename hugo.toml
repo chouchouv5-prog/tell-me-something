@@ -1,0 +1,20 @@
+baseURL = "https://tell-me-something.pages.dev/"
+languageCode = "fr-fr"
+title = "Tell Me Something"
+theme = "PaperMod"
+
+[params]
+  homeInfoParams = {Title = "Tell Me Something 👁️", Content = "Des vérités que personne ne dit tout haut."}
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+
+[menu]
+  [[menu.main]]
+    name = "Articles"
+    url = "/posts/"
+    weight = 1
+  [[menu.main]]
+    name = "À propos"
+    url = "/about/"
+    weight = 2
