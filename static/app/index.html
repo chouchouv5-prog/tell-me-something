@@ -7,6 +7,8 @@
 <meta property="og:title" content="Tell Me Something 👁️" />
 <meta property="og:description" content="Envoie-moi un message anonyme ! Personne ne saura que c'est toi." />
 <meta property="og:image" content="https://tell-me-something.pages.dev/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://tell-me-something.pages.dev/app/" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -124,6 +126,23 @@ const SUPABASE_KEY = 'sb_publishable_Tvd6E1mW4OYLeIuuIpWeyw_tcntyeLb';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 let currentUser = null;
+
+// ✅ CORRECTION : Touche Entrée sur tous les champs
+document.addEventListener('DOMContentLoaded', () => {
+  // Entrée sur les champs d'inscription
+  ['signupUsername', 'signupEmail', 'signupPassword'].forEach(id => {
+    document.getElementById(id).addEventListener('keydown', e => {
+      if (e.key === 'Enter') signup();
+    });
+  });
+
+  // Entrée sur les champs de connexion
+  ['loginEmail', 'loginPassword'].forEach(id => {
+    document.getElementById(id).addEventListener('keydown', e => {
+      if (e.key === 'Enter') login();
+    });
+  });
+});
 
 function togglePass(id) {
   const input = document.getElementById(id);
