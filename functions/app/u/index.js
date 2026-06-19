@@ -1,16 +1,14 @@
 export async function onRequest(context) {
   const url = new URL(context.request.url);
   const username = url.searchParams.get('u') || '';
-  const cleanName = username.replace(/[^a-zA-Z0-9_\-]/g, '');
+  const cleanName = username.replace(/[^a-zA-Z0-9_-]/g, '');
 
-  const title = cleanName
-    ? `Envoie un message anonyme a @${cleanName}`
-    : 'Tell Me Something';
+  if (!cleanName) {
+    return Response.redirect('https://tell-me-something.pages.dev/app/', 302);
+  }
 
-  const description = cleanName
-    ? `Clique pour envoyer un message secret a @${cleanName}. Ton identite restera cachee !`
-    : 'Envoie des messages anonymes. Gratuit et 100% anonyme.';
-
+  const title = `Envoie un message anonyme a @${cleanName}`;
+  const description = `Clique pour envoyer un message secret a @${cleanName}. Ton identite restera cachee !`;
   const ogImage = 'https://tell-me-something.pages.dev/og-image.png';
 
   const html = `<!DOCTYPE html>
@@ -53,16 +51,16 @@ button:disabled{background:#444;cursor:not-allowed}
 </head>
 <body>
 <div class="container">
-  <h1>👁️ Tell Me Something</h1>
+  <h1>Tell Me Something</h1>
   <p class="subtitle">Messages anonymes, 100% gratuit</p>
   <div class="card">
     <div class="user-badge" id="userBadge">Chargement...</div>
     <div id="alertBox"></div>
     <textarea id="msgText" placeholder="Ecris ton message anonyme ici..." maxlength="500" oninput="document.getElementById('charCount').textContent=this.value.length"></textarea>
     <div class="char-count"><span id="charCount">0</span>/500</div>
-    <button id="sendBtn" onclick="sendMessage()">📨 Envoyer anonymement</button>
+    <button id="sendBtn" onclick="sendMessage()">Envoyer anonymement</button>
   </div>
-  <p class="footer">Ton identite reste secrete &bull; <a href="/app/">Creer mon compte</a></p>
+  <p class="footer">Ton identite reste secrete - <a href="/app/">Creer mon compte</a></p>
 </div>
 <script>
 const SUPABASE_URL='https://bcnchlfbbbgkrqctlyrz.supabase.co';
@@ -99,7 +97,7 @@ async function sendMessage(){
 }
 <\/script>
 </body>
-</html>\`;
+</html>`;
 
   return new Response(html, {
     headers: {'Content-Type': 'text/html;charset=UTF-8'}
