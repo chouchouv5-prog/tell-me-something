@@ -4,41 +4,53 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tell Me Something</title>
-<meta property="og:title" content="Tell Me Something" />
-<meta property="og:description" content="Recois des messages anonymes de tes amis !" />
+<meta property="og:title" content="Tell Me Something 👁️" />
+<meta property="og:description" content="Envoie-moi un message anonyme ! Personne ne saura que c'est toi." />
 <meta property="og:image" content="https://tell-me-something.pages.dev/og-image.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://tell-me-something.pages.dev/app/" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://tell-me-something.pages.dev/og-image.png" />
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family: 'Segoe UI', sans-serif; background:#0a0a0a; color:#fff; min-height:100vh; }
-.container { max-width:500px; margin:0 auto; padding:40px 20px; }
-h1 { font-size:2rem; text-align:center; margin-bottom:10px; }
-.subtitle { text-align:center; color:#888; margin-bottom:40px; }
-.card { background:#1a1a1a; border-radius:16px; padding:30px; margin-bottom:20px; }
+.container { max-width:500px; margin:0 auto; padding:30px 20px; }
+h1 { font-size:2rem; text-align:center; margin-bottom:6px; }
+.subtitle { text-align:center; color:#888; margin-bottom:30px; }
+.card { background:#1a1a1a; border-radius:16px; padding:24px; margin-bottom:16px; }
 .input-wrap { position:relative; margin-bottom:14px; }
 .input-wrap input { width:100%; padding:14px 44px 14px 14px; background:#2a2a2a; border:1px solid #333; border-radius:10px; color:#fff; font-size:15px; outline:none; }
 .input-wrap input:focus { border-color:#6366f1; }
-.input-wrap .eye { position:absolute; right:14px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:18px; }
+.input-wrap .eye { position:absolute; right:14px; top:50%; transform:translateY(-50%); cursor:pointer; }
 input[type="text"], input[type="email"] { width:100%; padding:14px; background:#2a2a2a; border:1px solid #333; border-radius:10px; color:#fff; font-size:15px; margin-bottom:14px; outline:none; }
 input[type="text"]:focus, input[type="email"]:focus { border-color:#6366f1; }
 button { width:100%; padding:14px; background:#6366f1; color:#fff; border:none; border-radius:10px; font-size:16px; cursor:pointer; font-weight:600; margin-top:4px; }
 button:hover { background:#4f46e5; }
-.tab { display:flex; gap:10px; margin-bottom:20px; }
-.tab button { background:#1a1a1a; margin-top:0; }
+.tab { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+.tab button { background:#1a1a1a; margin-top:0; font-size:14px; padding:10px; }
 .tab button.active { background:#6366f1; }
-.msg { padding:14px; background:#2a2a2a; border-radius:10px; margin-bottom:10px; }
-.msg-time { font-size:11px; color:#666; margin-top:6px; }
 .hidden { display:none; }
 .alert { padding:12px; border-radius:8px; margin-bottom:14px; font-size:14px; }
 .alert-success { background:#064e3b; color:#6ee7b7; }
 .alert-error { background:#450a0a; color:#fca5a5; }
 .link-box { background:#2a2a2a; padding:14px; border-radius:10px; word-break:break-all; font-size:13px; color:#6366f1; margin-bottom:14px; }
+
+/* MESSAGES */
+.msg { background:#2a2a2a; border-radius:12px; padding:16px; margin-bottom:10px; position:relative; border-left:3px solid #333; transition:border 0.2s; }
+.msg.unread { border-left:3px solid #6366f1; }
+.msg-content { font-size:15px; line-height:1.5; margin-bottom:8px; padding-right:70px; }
+.msg-time { font-size:11px; color:#666; }
+.msg-actions { position:absolute; top:12px; right:12px; display:flex; gap:6px; }
+.btn-read { background:#2a2a2a; border:1px solid #444; color:#888; padding:4px 8px; border-radius:6px; font-size:11px; cursor:pointer; width:auto; margin:0; }
+.btn-read.done { background:#064e3b; color:#6ee7b7; border-color:#065f46; }
+.btn-delete { background:#450a0a; border:none; color:#fca5a5; padding:4px 8px; border-radius:6px; font-size:11px; cursor:pointer; width:auto; margin:0; }
+.btn-delete:hover { background:#7f1d1d; }
+.badge { background:#6366f1; color:#fff; border-radius:50%; width:20px; height:20px; font-size:11px; display:inline-flex; align-items:center; justify-content:center; margin-left:6px; }
 .logout-btn { background:#333; margin-top:10px; }
+.stats { display:flex; gap:10px; margin-bottom:16px; }
+.stat { background:#2a2a2a; border-radius:10px; padding:12px; flex:1; text-align:center; }
+.stat-num { font-size:1.5rem; font-weight:700; color:#6366f1; }
+.stat-label { font-size:11px; color:#888; margin-top:2px; }
 </style>
 </head>
 <body>
@@ -50,29 +62,29 @@ button:hover { background:#4f46e5; }
     <button class="active" onclick="showTab('home')">Accueil</button>
     <button onclick="showTab('signup')">Inscription</button>
     <button onclick="showTab('login')">Connexion</button>
-    <button onclick="showTab('inbox')" id="inboxBtn" class="hidden">📩 Mes messages</button>
+    <button onclick="showTab('inbox')" id="inboxBtn" class="hidden">📩 Mes messages <span class="badge hidden" id="badge">0</span></button>
   </div>
 
   <!-- HOME -->
   <div id="home" class="card">
-    <h2 style="margin-bottom:10px;">Comment ca marche ?</h2>
+    <h2 style="margin-bottom:10px;">Comment ça marche ?</h2>
     <p style="color:#888; line-height:1.8;">
-      1️⃣ Cree un compte gratuitement<br>
+      1️⃣ Crée un compte gratuitement<br>
       2️⃣ Obtiens ton lien unique<br>
       3️⃣ Partage-le sur X, Instagram...<br>
-      4️⃣ Recois des messages anonymes 🎉
+      4️⃣ Reçois des messages anonymes 🎉
     </p>
-    <button onclick="showTab('signup')" style="margin-top:20px;">Creer mon compte 🚀</button>
+    <button onclick="showTab('signup')" style="margin-top:20px;">Créer mon compte 🚀</button>
   </div>
 
   <!-- INSCRIPTION -->
   <div id="signup" class="card hidden">
-    <h2 style="margin-bottom:20px;">Creer un compte</h2>
+    <h2 style="margin-bottom:20px;">Créer un compte</h2>
     <div id="signupAlert"></div>
     <input type="text" id="signupUsername" placeholder="Nom d'utilisateur (ex: sarah)" />
     <input type="email" id="signupEmail" placeholder="Email" />
     <div class="input-wrap">
-      <input type="password" id="signupPassword" placeholder="Mot de passe (min 6 caracteres)" />
+      <input type="password" id="signupPassword" placeholder="Mot de passe (6 caractères min)" />
       <span class="eye" onclick="togglePass('signupPassword')">👁️</span>
     </div>
     <button onclick="signup()">S'inscrire</button>
@@ -97,11 +109,23 @@ button:hover { background:#4f46e5; }
       <div class="link-box" id="myLink"></div>
       <button onclick="copyLink()">📋 Copier le lien</button>
     </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num" id="totalMsg">0</div>
+        <div class="stat-label">Messages total</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="unreadMsg">0</div>
+        <div class="stat-label">Non lus</div>
+      </div>
+    </div>
+
     <div class="card">
       <h2 style="margin-bottom:16px;">📩 Mes messages</h2>
       <div id="messagesList"><p style="color:#666;">Aucun message pour l'instant.</p></div>
     </div>
-    <button class="logout-btn" onclick="logout()">Se deconnecter</button>
+    <button class="logout-btn" onclick="logout()">Se déconnecter</button>
   </div>
 </div>
 
@@ -112,73 +136,31 @@ const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 let currentUser = null;
 
-// Touche Entree
-document.addEventListener('DOMContentLoaded', () => {
-  ['signupUsername','signupEmail','signupPassword'].forEach(id => {
-    document.getElementById(id).addEventListener('keydown', e => {
-      if (e.key === 'Enter') signup();
-    });
-  });
-  ['loginEmail','loginPassword'].forEach(id => {
-    document.getElementById(id).addEventListener('keydown', e => {
-      if (e.key === 'Enter') login();
-    });
-  });
-
-  // Verifier si deja connecte
-  sb.auth.getSession().then(({ data: { session } }) => {
-    if (session) {
-      sb.from('profiles').select('username').eq('email', session.user.email).single().then(({ data }) => {
-        if (data) {
-          currentUser = data.username;
-          showInbox();
-        }
-      });
-    }
-  });
-});
-
 function togglePass(id) {
   const input = document.getElementById(id);
   input.type = input.type === 'password' ? 'text' : 'password';
 }
 
 function showTab(tab) {
-  ['home','signup','login','inbox'].forEach(t => {
-    document.getElementById(t).classList.add('hidden');
-  });
+  ['home','signup','login','inbox'].forEach(t => document.getElementById(t).classList.add('hidden'));
   document.getElementById(tab).classList.remove('hidden');
   document.querySelectorAll('.tab button:not(#inboxBtn)').forEach(b => b.classList.remove('active'));
 }
 
 async function signup() {
-  const username = document.getElementById('signupUsername').value.trim().toLowerCase();
+  const username = document.getElementById('signupUsername').value.trim().toLowerCase().replace(/\s+/g,'');
   const email = document.getElementById('signupEmail').value.trim();
   const password = document.getElementById('signupPassword').value;
   const alertEl = document.getElementById('signupAlert');
 
-  if (!username || !email || !password) {
-    alertEl.innerHTML = '<div class="alert alert-error">Remplis tous les champs !</div>';
-    return;
-  }
-  if (password.length < 6) {
-    alertEl.innerHTML = '<div class="alert alert-error">Mot de passe : minimum 6 caracteres !</div>';
-    return;
-  }
-
-  alertEl.innerHTML = '<div class="alert" style="background:#1a1a2e;color:#888;">Inscription en cours...</div>';
+  if (!username || !email || !password) { alertEl.innerHTML = '<div class="alert alert-error">Remplis tous les champs !</div>'; return; }
+  if (password.length < 6) { alertEl.innerHTML = '<div class="alert alert-error">Mot de passe : 6 caractères minimum !</div>'; return; }
 
   const { error: authError } = await sb.auth.signUp({ email, password });
-  if (authError) {
-    alertEl.innerHTML = `<div class="alert alert-error">${authError.message}</div>`;
-    return;
-  }
+  if (authError) { alertEl.innerHTML = `<div class="alert alert-error">${authError.message}</div>`; return; }
 
   const { error: profileError } = await sb.from('profiles').insert({ username, email });
-  if (profileError) {
-    alertEl.innerHTML = '<div class="alert alert-error">Nom d\'utilisateur deja pris !</div>';
-    return;
-  }
+  if (profileError) { alertEl.innerHTML = '<div class="alert alert-error">Nom d\'utilisateur déjà pris !</div>'; return; }
 
   currentUser = username;
   showInbox();
@@ -189,50 +171,59 @@ async function login() {
   const password = document.getElementById('loginPassword').value;
   const alertEl = document.getElementById('loginAlert');
 
-  alertEl.innerHTML = '<div class="alert" style="background:#1a1a2e;color:#888;">Connexion en cours...</div>';
-
   const { error } = await sb.auth.signInWithPassword({ email, password });
-  if (error) {
-    alertEl.innerHTML = '<div class="alert alert-error">Email ou mot de passe incorrect.</div>';
-    return;
-  }
+  if (error) { alertEl.innerHTML = '<div class="alert alert-error">Email ou mot de passe incorrect.</div>'; return; }
 
   const { data: profile } = await sb.from('profiles').select('username').eq('email', email).single();
-  if (profile) {
-    currentUser = profile.username;
-    showInbox();
-  }
+  if (profile) { currentUser = profile.username; showInbox(); }
 }
 
 async function showInbox() {
   document.getElementById('inboxBtn').classList.remove('hidden');
   showTab('inbox');
-  const baseUrl = 'https://tell-me-something.pages.dev/app/u/?u=';
+  const baseUrl = window.location.origin + '/app/u/?u=';
   document.getElementById('myLink').textContent = baseUrl + currentUser;
   await loadMessages();
 }
 
 async function loadMessages() {
-  const { data } = await sb.from('messages').select('*')
-    .eq('recipient_username', currentUser)
-    .order('created_at', { ascending: false });
+  const { data } = await sb.from('messages').select('*').eq('recipient_username', currentUser).order('created_at', { ascending: false });
   const list = document.getElementById('messagesList');
-  if (!data || data.length === 0) {
-    list.innerHTML = '<p style="color:#666;">Aucun message pour l\'instant.</p>';
-    return;
-  }
+
+  if (!data || data.length === 0) { list.innerHTML = '<p style="color:#666;">Aucun message pour l\'instant.</p>'; return; }
+
+  const unread = data.filter(m => !m.is_read).length;
+  document.getElementById('totalMsg').textContent = data.length;
+  document.getElementById('unreadMsg').textContent = unread;
+  if (unread > 0) { document.getElementById('badge').textContent = unread; document.getElementById('badge').classList.remove('hidden'); }
+
   list.innerHTML = data.map(m => `
-    <div class="msg">
-      <p>${m.content}</p>
+    <div class="msg ${m.is_read ? '' : 'unread'}" id="msg-${m.id}">
+      <div class="msg-actions">
+        <button class="btn-read ${m.is_read ? 'done' : ''}" onclick="markRead('${m.id}', ${m.is_read})">${m.is_read ? '✓ Lu' : '👁 Lire'}</button>
+        <button class="btn-delete" onclick="deleteMsg('${m.id}')">🗑</button>
+      </div>
+      <div class="msg-content">${m.content}</div>
       <div class="msg-time">${new Date(m.created_at).toLocaleDateString('fr-FR')}</div>
     </div>
   `).join('');
 }
 
+async function markRead(id, isRead) {
+  await sb.from('messages').update({ is_read: !isRead }).eq('id', id);
+  await loadMessages();
+}
+
+async function deleteMsg(id) {
+  if (!confirm('Supprimer ce message ?')) return;
+  await sb.from('messages').delete().eq('id', id);
+  document.getElementById('msg-' + id).remove();
+  await loadMessages();
+}
+
 function copyLink() {
-  const link = document.getElementById('myLink').textContent;
-  navigator.clipboard.writeText(link);
-  alert('Lien copie !');
+  navigator.clipboard.writeText(document.getElementById('myLink').textContent);
+  alert('✅ Lien copié !');
 }
 
 async function logout() {
