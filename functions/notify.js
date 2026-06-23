@@ -14,7 +14,7 @@ export async function onRequest(context) {
     },
     body: JSON.stringify({
       from: 'Tell Me Something <onboarding@resend.dev>',
-      to: recipient_email,
+      to: 'chouchou16v5@gmail.com',
       subject: '👁️ Tu as reçu un nouveau message anonyme !',
       html: `
         <div style="font-family:sans-serif;max-width:500px;margin:0 auto;background:#0a0a0a;color:#fff;padding:30px;border-radius:16px;">
