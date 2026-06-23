@@ -104,8 +104,18 @@ async function sendMessage(){
   const btn=document.getElementById('sendBtn');
   if(!content){alertBox.innerHTML='<div class="alert alert-error">Ecris un message !</div>';return;}
   btn.disabled=true;btn.textContent='Envoi...';
-  const{error}=await sb.from('messages').insert({recipient_username:username,content:content});
-  if(error){
+ const{error}=await sb.from('messages').insert({recipient_username:username,content:content});
+if(!error){
+  const{data:profile}=await sb.from('profiles').select('email').eq('username',username).single();
+  if(profile?.email){
+    fetch('/notify',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({recipient_email:profile.email,recipient_username:username,message:content})
+    });
+  }
+}
+if(error){
     alertBox.innerHTML='<div class="alert alert-error">Erreur. Réessaie !</div>';
     btn.disabled=false;btn.textContent='Envoyer anonymement 🚀';
   }else{
