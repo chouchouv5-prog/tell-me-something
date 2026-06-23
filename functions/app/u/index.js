@@ -16,7 +16,7 @@ export async function onRequest(context) {
     return Response.redirect('https://tell-me-something.pages.dev/app/', 302);
   }
 
-  const acceptLang = context.request.headers.get('Accept-Language') || 'en';
+  const acceptLang = context.request.headers.get('Accept-Language') || 'fr';
   const lang = acceptLang.toLowerCase().startsWith('ar') ? 'ar' :
                acceptLang.toLowerCase().startsWith('en') ? 'en' :
                acceptLang.toLowerCase().startsWith('es') ? 'es' :
