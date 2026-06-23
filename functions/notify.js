@@ -9,7 +9,7 @@ export async function onRequest(context) {
   const response = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
-      'Authorization': 're_RTF6iWuv_6bcrK8cNkkxvr71aww1AwcAh',
+      'Authorization': 'Bearer re_RTF6iWuv_6bcrK8cNkkxvr71aww1AwcAh',
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
