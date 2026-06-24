@@ -20,33 +20,33 @@ h1 { font-size:2rem; text-align:center; margin-bottom:6px; }
 .card { background:#1a1a1a; border-radius:16px; padding:24px; margin-bottom:16px; }
 .input-wrap { position:relative; margin-bottom:14px; }
 .input-wrap input { width:100%; padding:14px 44px 14px 14px; background:#2a2a2a; border:1px solid #333; border-radius:10px; color:#fff; font-size:15px; outline:none; }
-.input-wrap input:focus { border-color:#6366f1; }
+.input-wrap input:focus { border-color:#00c853; }
 .input-wrap .eye { position:absolute; right:14px; top:50%; transform:translateY(-50%); cursor:pointer; }
 input[type="text"], input[type="email"] { width:100%; padding:14px; background:#2a2a2a; border:1px solid #333; border-radius:10px; color:#fff; font-size:15px; margin-bottom:14px; outline:none; }
-input[type="text"]:focus, input[type="email"]:focus { border-color:#6366f1; }
-button { width:100%; padding:14px; background:#6366f1; color:#fff; border:none; border-radius:10px; font-size:16px; cursor:pointer; font-weight:600; margin-top:4px; }
-button:hover { background:#4f46e5; }
+input[type="text"]:focus, input[type="email"]:focus { border-color:#00c853; }
+button { width:100%; padding:14px; background:#00c853; color:#fff; border:none; border-radius:10px; font-size:16px; cursor:pointer; font-weight:600; margin-top:4px; }
+button:hover { background:#00a846; }
 .tab { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
 .tab button { background:#1a1a1a; margin-top:0; font-size:14px; padding:10px; }
-.tab button.active { background:#6366f1; }
+.tab button.active { background:#00c853; }
 .hidden { display:none; }
 .alert { padding:12px; border-radius:8px; margin-bottom:14px; font-size:14px; }
 .alert-success { background:#064e3b; color:#6ee7b7; }
 .alert-error { background:#450a0a; color:#fca5a5; }
-.link-box { background:#2a2a2a; padding:14px; border-radius:10px; word-break:break-all; font-size:13px; color:#6366f1; margin-bottom:14px; }
+.link-box { background:#2a2a2a; padding:14px; border-radius:10px; word-break:break-all; font-size:13px; color:#00c853; margin-bottom:14px; }
 .msg { background:#2a2a2a; border-radius:12px; padding:16px; margin-bottom:10px; position:relative; border-left:3px solid #333; cursor:pointer; transition:all 0.2s; }
 .msg:hover { background:#333; }
-.msg.unread { border-left:3px solid #6366f1; }
+.msg.unread { border-left:3px solid #00c853; }
 .msg-content { font-size:15px; line-height:1.5; margin-bottom:8px; padding-right:70px; }
 .msg-time { font-size:11px; color:#666; }
 .msg-actions { position:absolute; top:12px; right:12px; display:flex; gap:6px; }
 .btn-delete { background:#450a0a; border:none; color:#fca5a5; padding:4px 8px; border-radius:6px; font-size:11px; cursor:pointer; width:auto; margin:0; }
 .btn-delete:hover { background:#7f1d1d; }
-.badge { background:#6366f1; color:#fff; border-radius:50%; width:20px; height:20px; font-size:11px; display:inline-flex; align-items:center; justify-content:center; margin-left:6px; }
+.badge { background:#00c853; color:#fff; border-radius:50%; width:20px; height:20px; font-size:11px; display:inline-flex; align-items:center; justify-content:center; margin-left:6px; }
 .logout-btn { background:#333; margin-top:10px; }
 .stats { display:flex; gap:10px; margin-bottom:16px; }
 .stat { background:#2a2a2a; border-radius:10px; padding:12px; flex:1; text-align:center; }
-.stat-num { font-size:1.5rem; font-weight:700; color:#6366f1; }
+.stat-num { font-size:1.5rem; font-weight:700; color:#00c853; }
 .stat-label { font-size:11px; color:#888; margin-top:2px; }
 /* POPUP */
 .popup-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:100; align-items:center; justify-content:center; }
@@ -55,7 +55,7 @@ button:hover { background:#4f46e5; }
 @keyframes popIn { from { transform:scale(0.8); opacity:0; } to { transform:scale(1); opacity:1; } }
 .popup-emoji { font-size:50px; margin-bottom:16px; }
 .popup-text { font-size:16px; line-height:1.7; color:#fff; margin-bottom:20px; text-align:left; background:#2a2a2a; padding:16px; border-radius:10px; }
-.popup-btn { width:100%; padding:14px; background:#6366f1; color:#fff; border:none; border-radius:10px; font-size:16px; cursor:pointer; font-weight:600; margin-bottom:8px; }
+.popup-btn { width:100%; padding:14px; background:#00c853; color:#fff; border:none; border-radius:10px; font-size:16px; cursor:pointer; font-weight:600; margin-bottom:8px; }
 .popup-btn2 { width:100%; padding:12px; background:#450a0a; color:#fca5a5; border:none; border-radius:10px; font-size:14px; cursor:pointer; }
 </style>
 </head>
@@ -148,6 +148,12 @@ button:hover { background:#4f46e5; }
 const SUPABASE_URL = 'https://bcnchlfbbbgkrqctlyrz.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_Tvd6E1mW4OYLeIuuIpWeyw_tcntyeLb';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+sb.auth.getSession().then(async ({ data: { session } }) => {
+  if (session) {
+    const { data: profile } = await sb.from('profiles').select('username').eq('email', session.user.email).single();
+    if (profile) { currentUser = profile.username; showInbox(); }
+  }
+});
 
 let currentUser = null;
 
@@ -167,12 +173,12 @@ async function signup() {
   const email = document.getElementById('signupEmail').value.trim();
   const password = document.getElementById('signupPassword').value;
   const alertEl = document.getElementById('signupAlert');
-  if (!username || !email || !password) { alertEl.innerHTML = '<div class="alert alert-error">Remplis tous les champs !</div>'; return; }
-  if (password.length < 6) { alertEl.innerHTML = '<div class="alert alert-error">Mot de passe : 6 caractères minimum !</div>'; return; }
+  if (!username || !email || !password) { alertEl.innerHTML = '<div class="alert alert-error">Fill in all the fields !</div>'; return; }
+  if (password.length < 6) { alertEl.innerHTML = '<div class="alert alert-error">Password : minimum 6 characters !</div>'; return; }
   const { error: authError } = await sb.auth.signUp({ email, password });
   if (authError) { alertEl.innerHTML = `<div class="alert alert-error">${authError.message}</div>`; return; }
   const { error: profileError } = await sb.from('profiles').insert({ username, email });
-  if (profileError) { alertEl.innerHTML = '<div class="alert alert-error">Nom d\'utilisateur déjà pris !</div>'; return; }
+  if (profileError) { alertEl.innerHTML = '<div class="alert alert-error">Username\ already taken !</div>'; return; }
   currentUser = username;
   showInbox();
 }
@@ -182,7 +188,7 @@ async function login() {
   const password = document.getElementById('loginPassword').value;
   const alertEl = document.getElementById('loginAlert');
   const { error } = await sb.auth.signInWithPassword({ email, password });
-  if (error) { alertEl.innerHTML = '<div class="alert alert-error">Email ou mot de passe incorrect.</div>'; return; }
+  if (error) { alertEl.innerHTML = '<div class="alert alert-error">Incorrect email or password.</div>'; return; }
   const { data: profile } = await sb.from('profiles').select('username').eq('email', email).single();
   if (profile) { currentUser = profile.username; showInbox(); }
 }
@@ -192,6 +198,8 @@ async function showInbox() {
   showTab('inbox');
   document.getElementById('myLink').textContent = window.location.origin + '/app/u/?u=' + currentUser;
   await loadMessages();
+  // Rafraîchir les messages toutes les 10 secondes
+  setInterval(loadMessages, 10000);
 }
 
 async function loadMessages() {
