@@ -62,74 +62,74 @@ button:hover { background:#4f46e5; }
 <body>
 <div class="container">
   <h1>👁️ Tell Me Something</h1>
-  <p class="subtitle">Des messages anonymes, pour toi.</p>
+  <p class="subtitle">Anonymous messages, just for you.</p>
 
   <div class="tab">
-    <button class="active" onclick="showTab('home')">Accueil</button>
-    <button onclick="showTab('signup')">Inscription</button>
-    <button onclick="showTab('login')">Connexion</button>
-    <button onclick="showTab('inbox')" id="inboxBtn" class="hidden">📩 Mes messages <span class="badge hidden" id="badge">0</span></button>
+    <button class="active" onclick="showTab('home')">Home</button>
+    <button onclick="showTab('signup')">Sign up</button>
+    <button onclick="showTab('login')">Log in</button>
+    <button onclick="showTab('inbox')" id="inboxBtn" class="hidden">📩 My messages <span class="badge hidden" id="badge">0</span></button>
   </div>
 
   <!-- HOME -->
   <div id="home" class="card">
-    <h2 style="margin-bottom:10px;">Comment ça marche ?</h2>
+    <h2 style="margin-bottom:10px;">How does it work?</h2>
     <p style="color:#888; line-height:1.8;">
-      1️⃣ Crée un compte gratuitement<br>
-      2️⃣ Obtiens ton lien unique<br>
-      3️⃣ Partage-le sur X, Instagram...<br>
-      4️⃣ Reçois des messages anonymes 🎉
+      1️⃣ Create a free account<br>
+      2️⃣ Get your unique link<br>
+      3️⃣ Share it on X, Facebook, Instagram...<br>
+      4️⃣ Receive anonymous messages 🎉
     </p>
-    <button onclick="showTab('signup')" style="margin-top:20px;">Créer mon compte 🚀</button>
+    <button onclick="showTab('signup')" style="margin-top:20px;">Create my account 🚀</button>
   </div>
 
   <!-- INSCRIPTION -->
   <div id="signup" class="card hidden">
-    <h2 style="margin-bottom:20px;">Créer un compte</h2>
+    <h2 style="margin-bottom:20px;">Create an account</h2>
     <div id="signupAlert"></div>
-    <input type="text" id="signupUsername" placeholder="Nom d'utilisateur (ex: sarah)" />
+    <input type="text" id="signupUsername" placeholder="Username (ex: sarah)" />
     <input type="email" id="signupEmail" placeholder="Email" />
     <div class="input-wrap">
-      <input type="password" id="signupPassword" placeholder="Mot de passe (6 caractères min)" />
+      <input type="password" id="signupPassword" placeholder="Password (minimum 6 characters)" />
       <span class="eye" onclick="togglePass('signupPassword')">👁️</span>
     </div>
-    <button onclick="signup()">S'inscrire</button>
+    <button onclick="signup()">sign up</button>
   </div>
 
   <!-- CONNEXION -->
   <div id="login" class="card hidden">
-    <h2 style="margin-bottom:20px;">Connexion</h2>
+    <h2 style="margin-bottom:20px;">Login</h2>
     <div id="loginAlert"></div>
     <input type="email" id="loginEmail" placeholder="Email" />
     <div class="input-wrap">
       <input type="password" id="loginPassword" placeholder="Mot de passe" />
       <span class="eye" onclick="togglePass('loginPassword')">👁️</span>
     </div>
-    <button onclick="login()">Se connecter</button>
+    <button onclick="login()">Log in</button>
   </div>
 
   <!-- INBOX -->
   <div id="inbox" class="hidden">
     <div class="card">
-      <h2 style="margin-bottom:10px;">🔗 Ton lien unique</h2>
+      <h2 style="margin-bottom:10px;">🔗 Your unique link</h2>
       <div class="link-box" id="myLink"></div>
-      <button onclick="copyLink()">📋 Copier le lien</button>
+      <button onclick="copyLink()">📋 Copy link</button>
     </div>
     <div class="stats">
       <div class="stat">
         <div class="stat-num" id="totalMsg">0</div>
-        <div class="stat-label">Messages total</div>
+        <div class="stat-label">Total messages</div>
       </div>
       <div class="stat">
         <div class="stat-num" id="unreadMsg">0</div>
-        <div class="stat-label">Non lus</div>
+        <div class="stat-label">Unread</div>
       </div>
     </div>
     <div class="card">
-      <h2 style="margin-bottom:16px;">📩 Mes messages</h2>
-      <div id="messagesList"><p style="color:#666;">Aucun message pour l'instant.</p></div>
+      <h2 style="margin-bottom:16px;">📩 My messages</h2>
+      <div id="messagesList"><p style="color:#666;">No messages yet.</p></div>
     </div>
-    <button class="logout-btn" onclick="logout()">Se déconnecter</button>
+    <button class="logout-btn" onclick="logout()">Log out</button>
   </div>
 </div>
 
@@ -139,8 +139,8 @@ button:hover { background:#4f46e5; }
     <div class="popup-emoji">💌</div>
     <div class="popup-text" id="msgPopupText"></div>
     <input type="hidden" id="msgPopupId">
-    <button class="popup-btn" onclick="closeMsgPopup()">✓ Fermer</button>
-    <button class="popup-btn2" onclick="deleteMsgFromPopup()">🗑 Supprimer ce message</button>
+    <button class="popup-btn" onclick="closeMsgPopup()">✓ Close</button>
+    <button class="popup-btn2" onclick="deleteMsgFromPopup()">🗑 Delete this message</button>
   </div>
 </div>
 
