@@ -115,21 +115,21 @@ body{font-family:'Segoe UI',sans-serif;background:#0a0a0a;color:#fff;min-height:
 h1{font-size:1.8rem;text-align:center;margin-bottom:6px}
 .subtitle{text-align:center;color:#888;margin-bottom:24px;font-size:14px}
 .card{background:#1a1a1a;border-radius:16px;padding:24px}
-.username{text-align:center;color:#6366f1;font-size:1.1rem;font-weight:600;margin-bottom:16px}
+.username{text-align:center;color:#00c853;font-size:1.1rem;font-weight:600;margin-bottom:16px}
 .suggestions{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-.suggestion{background:#2a2a2a;border:1px solid #333;border-radius:20px;padding:8px 14px;font-size:13px;cursor:pointer;color:#ccc;transition:all 0.2s}
-.suggestion:hover{background:#6366f1;color:#fff;border-color:#6366f1}
-textarea{width:100%;padding:14px;background:#2a2a2a;border:1px solid #333;border-radius:10px;color:#fff;font-size:15px;margin-bottom:8px;outline:none;resize:none;font-family:inherit;direction:${tx.dir}}
-textarea:focus{border-color:#6366f1}
+.suggestion{background:#2a2a2a;border:1px solid #1a1a1a;border-radius:20px;padding:8px 14px;font-size:13px;cursor:pointer;color:#ccc;transition:all 0.2s}
+.suggestion:hover{background:#00c853;color:#fff;border-color:#00c853}
+textarea{width:100%;padding:14px;background:#2a2a2a;border:1px solid #1a1a1a;border-radius:10px;color:#fff;font-size:15px;margin-bottom:8px;outline:none;resize:none;font-family:inherit;direction:${tx.dir}}
+textarea:focus{border-color:#00c853}
 .counter{text-align:${isRTL ? 'left' : 'right'};font-size:12px;color:#666;margin-bottom:14px}
-button.send{width:100%;padding:14px;background:#6366f1;color:#fff;border:none;border-radius:10px;font-size:16px;cursor:pointer;font-weight:600}
-button.send:hover{background:#4f46e5}
+button.send{width:100%;padding:14px;background:#00c853;color:#fff;border:none;border-radius:10px;font-size:16px;cursor:pointer;font-weight:600}
+button.send:hover{background:#00a846}
 button.send:disabled{background:#444;cursor:not-allowed}
 .alert{padding:12px;border-radius:8px;margin-bottom:14px;font-size:14px}
-.alert-success{background:#064e3b;color:#6ee7b7}
+.alert-success{background:#014d26;color:#69f0ae}
 .alert-error{background:#450a0a;color:#fca5a5}
 .footer{text-align:center;margin-top:16px;font-size:12px;color:#555}
-.footer a{color:#6366f1;text-decoration:none}
+.footer a{color:#00c853;text-decoration:none}
 .popup-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:100;align-items:center;justify-content:center}
 .popup-overlay.active{display:flex}
 .popup{background:#1a1a1a;border-radius:20px;padding:30px;max-width:380px;width:90%;text-align:center;animation:popIn 0.3s ease}
@@ -137,7 +137,7 @@ button.send:disabled{background:#444;cursor:not-allowed}
 .popup-emoji{font-size:60px;margin-bottom:16px}
 .popup h2{font-size:1.4rem;margin-bottom:8px}
 .popup p{color:#888;margin-bottom:20px;font-size:14px}
-.popup-btn{width:100%;padding:14px;background:#6366f1;color:#fff;border:none;border-radius:10px;font-size:16px;cursor:pointer;font-weight:600;margin-bottom:10px}
+.popup-btn{width:100%;padding:14px;background:#00c853;color:#fff;border:none;border-radius:10px;font-size:16px;cursor:pointer;font-weight:600;margin-bottom:10px}
 .popup-btn2{width:100%;padding:12px;background:#2a2a2a;color:#ccc;border:none;border-radius:10px;font-size:14px;cursor:pointer}
 </style>
 </head>
