@@ -14,7 +14,10 @@ export async function onRequest(context) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>@${cleanName} - Tell Me Something</title>
 <meta property="og:title" content="Send an anonymous message to @${cleanName}!" />
-<meta property="og:description" content="Click to send a secret message to @${cleanName}. Your identity stays hidden!" />
+<meta property="og:description" content="Send me an anonymous message... I dare you 🤫 Nobody will know it was you!" />
+<meta name="twitter:title" content="Send @${cleanName} an anonymous message 👁️" />
+<meta name="twitter:description" content="Nobody will know it was you 🤫" />
+<meta name="twitter:image" content="https://tell-me-something.pages.dev/og-image.png" />
 <meta property="og:image" content="https://tell-me-something.pages.dev/og-image.png" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
