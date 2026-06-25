@@ -196,7 +196,7 @@ async function login() {
 async function showInbox() {
   document.getElementById('inboxBtn').classList.remove('hidden');
   showTab('inbox');
-  const baseUrl = window.location.origin + '/app/u/?u=';
+  const baseUrl = window.location.origin + '/app/profile/?u=';
   document.getElementById('myLink').textContent = baseUrl + currentUser;
   await loadMessages();
   setInterval(loadMessages, 10000);
@@ -205,7 +205,7 @@ async function showInbox() {
 async function loadMessages() {
   const { data } = await sb.from('messages').select('*').eq('recipient_username', currentUser).order('created_at', { ascending: false });
   const list = document.getElementById('messagesList');
-  if (!data || data.length === 0) { list.innerHTML = '<p style="color:#666;">Aucun message pour l\'instant.</p>'; return; }
+  if (!data || data.length === 0) { list.innerHTML = '<p style="color:#666;">No messages yet</p>'; return; }
   const unread = data.filter(m => !m.is_read).length;
   document.getElementById('totalMsg').textContent = data.length;
   document.getElementById('unreadMsg').textContent = unread;
@@ -239,21 +239,21 @@ function closeMsgPopup() {
 
 async function deleteMsgFromPopup() {
   const id = document.getElementById('msgPopupId').value;
-  if (!confirm('Supprimer ce message ?')) return;
+  if (!confirm('Delete this message ?')) return;
   await sb.from('messages').delete().eq('id', id);
   closeMsgPopup();
   await loadMessages();
 }
 
 async function deleteMsg(id) {
-  if (!confirm('Supprimer ce message ?')) return;
+  if (!confirm('Delete this message ?')) return;
   await sb.from('messages').delete().eq('id', id);
   await loadMessages();
 }
 
 function copyLink() {
   navigator.clipboard.writeText(document.getElementById('myLink').textContent);
-  alert('✅ Lien copié !');
+  alert('✅ Copy link !');
 }
 
 async function logout() {
