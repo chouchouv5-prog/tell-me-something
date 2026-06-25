@@ -60,10 +60,10 @@ button.send:disabled{background:#444;cursor:not-allowed}
 </head>
 <body>
 <div class="container">
-  <div class="logo"><img src="/tms-logo.png" alt="TMS"></div>
+  <div class="logo"><a href="/app/"><img src="/tms-logo.png" alt="TMS"></a></div>
   <div class="avatar">${cleanName.charAt(0).toUpperCase()}</div>
   <div class="username">@${cleanName}</div>
-  <div class="handle">Tell Me Something</div>
+  <div class="handle"><a href="/app/" style="color:#00c853;text-decoration:none;">Tell Me Something</a></div>
   
   <div class="stats">
     <div class="stat">
