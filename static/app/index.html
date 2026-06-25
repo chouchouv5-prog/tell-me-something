@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tell Me Something</title>
 <meta property="og:title" content="Tell Me Something 👁️" />
-<meta property="og:description" content="Envoie-moi un message anonyme ! Personne ne saura que c'est toi." />
+<meta property="og:description" content="Send me an anonymous message! Nobody will know it was you." />
 <meta property="og:image" content="https://tell-me-something.pages.dev/og-image.png" />
 <meta property="og:url" content="https://tell-me-something.pages.dev/app/" />
 <meta property="og:type" content="website" />
@@ -61,7 +61,7 @@ button:hover { background:#00a846; }
 </head>
 <body>
 <div class="container">
-  <h1><img src="/tms-logo.png" alt="TMS" style="height:60px; vertical-align:middle; margin-right:10px;">👁️ Tell Me Something</h1>
+  <h1><img src="/tms-logo.png" alt="TMS" style="height:60px; vertical-align:middle; margin-right:10px;">👁️  Tell Me Something</h1>
   <p class="subtitle">Anonymous messages, just for you.</p>
 
   <div class="tab">
@@ -196,9 +196,9 @@ async function login() {
 async function showInbox() {
   document.getElementById('inboxBtn').classList.remove('hidden');
   showTab('inbox');
-  document.getElementById('myLink').textContent = window.location.origin + '/app/u/?u=' + currentUser;
+  const baseUrl = window.location.origin + '/app/u/?u=';
+  document.getElementById('myLink').textContent = baseUrl + currentUser;
   await loadMessages();
-  // Rafraîchir les messages toutes les 10 secondes
   setInterval(loadMessages, 10000);
 }
 
