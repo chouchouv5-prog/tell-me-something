@@ -100,6 +100,7 @@ export async function onRequest(context) {
   const html = `<!DOCTYPE html>
 <html lang="${lang}" dir="${tx.dir}">
 <head>
+<meta name="google-adsense-account" content="ca-pub-9050682577442017">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${tx.title} - @${cleanName}</title>
