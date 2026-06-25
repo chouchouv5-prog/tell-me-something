@@ -1,20 +1,28 @@
 baseURL = "https://tell-me-something.pages.dev/"
-languageCode = "fr-fr"
+languageCode = "en"
 title = "Tell Me Something"
 theme = "PaperMod"
 
 [params]
-  homeInfoParams = {Title = "Tell Me Something 👁️", Content = "Des vérités que personne ne dit tout haut."}
-  ShowReadingTime = true
-  ShowShareButtons = true
-  ShowPostNavLinks = true
+  homeInfoParams = {Title = "Tell Me Something 👁️", Content = "Receive anonymous messages from anyone. Nobody will know it was them!"}
+  ShowReadingTime = false
+  ShowShareButtons = false
+  ShowPostNavLinks = false
+
+[[params.homeInfoParams.links]]
+  name = "Create my account 🚀"
+  url = "/app/"
 
 [menu]
   [[menu.main]]
-    name = "Articles"
-    url = "/posts/"
+    name = "Sign Up"
+    url = "/app/"
     weight = 1
   [[menu.main]]
-    name = "À propos"
-    url = "/about/"
+    name = "Privacy Policy"
+    url = "/privacy.html"
     weight = 2
+  [[menu.main]]
+    name = "Terms"
+    url = "/terms.html"
+    weight = 3
