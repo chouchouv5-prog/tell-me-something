@@ -9,7 +9,7 @@ theme = "PaperMod"
   ShowPostNavLinks = false
 
   [params.homeInfoParams]
-    Title = "Tell Me Something 👁️"
+    Title = "Tell Me Something 🐱‍👤"
     Content = "Receive anonymous messages from anyone. Nobody will know it was them!"
 
   [[params.homeInfoParams.links]]
