@@ -16,7 +16,7 @@ export async function onRequest(context) {
 <title>@${cleanName} - Tell Me Something</title>
 <meta property="og:title" content="Send an anonymous message to @${cleanName}!" />
 <meta property="og:description" content="Send me an anonymous message... I dare you 🤫 Nobody will know it was you!" />
-<meta name="twitter:title" content="Send @${cleanName} an anonymous message 👁️" />
+<meta name="twitter:title" content="Send @${cleanName} an anonymous message 🐱‍👤️" />
 <meta name="twitter:description" content="Nobody will know it was you 🤫" />
 <meta name="twitter:image" content="https://tell-me-something.pages.dev/og-image.png" />
 <meta property="og:image" content="https://tell-me-something.pages.dev/og-image.png" />
@@ -75,7 +75,7 @@ button.send:disabled{background:#444;cursor:not-allowed}
       <div class="stat-label">Messages</div>
     </div>
     <div class="stat">
-      <div class="stat-num">👁️</div>
+      <div class="stat-num">🐱‍👤</div>
       <div class="stat-label">Anonymous</div>
     </div>
   </div>

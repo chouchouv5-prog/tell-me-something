@@ -144,7 +144,7 @@ button.send:disabled{background:#444;cursor:not-allowed}
 </head>
 <body>
 <div class="container">
-  <h1><a href="/app/" style="color:#fff;text-decoration:none;">👁️ ${tx.title}</a></h1>
+  <h1><a href="/app/" style="color:#fff;text-decoration:none;">🐱‍👤 ${tx.title}</a></h1>
   <p class="subtitle">${tx.subtitle}</p>
   <div class="card">
     <div class="username"><a href="/app/profile/?u=${cleanName}" style="color:#00c853;text-decoration:none;">${tx.msgFor} @${cleanName}</a></div>
