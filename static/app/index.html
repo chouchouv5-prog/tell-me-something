@@ -249,7 +249,6 @@ async function deleteMsgFromPopup() {
 }
 
 async function deleteMsg(id) {
-  if (!confirm('Delete this message ?')) return;
   await sb.from('messages').delete().eq('id', id);
   await loadMessages();
 }
@@ -265,6 +264,12 @@ async function logout() {
   document.getElementById('inboxBtn').classList.add('hidden');
   showTab('home');
 }
+
+async function markRead(id) {
+  await sb.from('messages').update({ is_read: true }).eq('id', id);
+  await loadMessages();
+}
+
 </script>
 </body>
 </html>
