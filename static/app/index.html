@@ -248,6 +248,12 @@ async function deleteMsgFromPopup() {
 }
 
 async function deleteMsg(id) {
+  const msgElement = document.getElementById('msg-' + id);
+  if (msgElement) {
+    msgElement.style.opacity = '0';
+    msgElement.style.transition = 'opacity 0.3s';
+    setTimeout(() => msgElement.remove(), 300);
+  }
   await sb.from('messages').delete().eq('id', id);
   await loadMessages();
 }
