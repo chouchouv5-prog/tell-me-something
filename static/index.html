@@ -7,7 +7,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9050682577442017" crossorigin="anonymous"></script>
 <title>Tell Me Something - Anonymous Messages</title>
 <meta name="description" content="Receive anonymous messages from anyone. Share your unique link and discover what people really think about you!">
-<meta property="og:title" content="Tell Me Something 👁️"/>
+<meta property="og:title" content="Tell Me Something 🐱‍👤"/>
 <meta property="og:description" content="Receive anonymous messages. Nobody will know it was them!"/>
 <meta property="og:image" content="https://tell-me-something.pages.dev/og-image.png"/>
 <meta property="og:type" content="website"/>
@@ -15,39 +15,65 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI',sans-serif;background:#0a0a0a;color:#fff;min-height:100vh}
-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 30px;border-bottom:1px solid #1a1a1a}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 30px;background:rgba(0,0,0,0.9);position:sticky;top:0;z-index:100;border-bottom:2px solid #00c853}
 nav img{height:50px}
-nav a{color:#fff;text-decoration:none;margin-left:20px;font-size:14px}
+nav a{color:#fff;text-decoration:none;margin-left:20px;font-size:14px;font-weight:600}
 nav a:hover{color:#00c853}
-.btn{background:#00c853;color:#fff!important;padding:10px 20px;border-radius:8px;font-weight:600}
-.btn:hover{background:#00a846!important}
-.hero{text-align:center;padding:80px 20px 60px}
-.hero h1{font-size:3rem;font-weight:800;margin-bottom:16px;line-height:1.2}
-.hero h1 span{color:#00c853}
-.hero p{font-size:1.2rem;color:#888;margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto}
+.btn-nav{background:linear-gradient(135deg,#00c853,#ffd600);color:#000!important;padding:10px 20px;border-radius:8px;font-weight:700}
+
+/* HERO */
+.hero{text-align:center;padding:80px 20px 60px;background:linear-gradient(180deg,#0a0a0a 0%,#0d1f0d 100%)}
+.hero-badge{display:inline-block;background:linear-gradient(135deg,#00c853,#ffd600);color:#000;padding:8px 20px;border-radius:20px;font-size:13px;font-weight:700;margin-bottom:24px;letter-spacing:1px}
+.hero h1{font-size:3.5rem;font-weight:900;margin-bottom:16px;line-height:1.1}
+.hero h1 .line1{color:#fff}
+.hero h1 .line2{background:linear-gradient(135deg,#00c853,#ffd600,#ff6d00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:1.2rem;color:#aaa;margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7}
 .hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.btn-main{background:#00c853;color:#fff;padding:16px 32px;border-radius:10px;font-size:1.1rem;font-weight:700;text-decoration:none}
-.btn-main:hover{background:#00a846}
-.btn-sec{background:#1a1a1a;color:#fff;padding:16px 32px;border-radius:10px;font-size:1.1rem;font-weight:700;text-decoration:none;border:1px solid #333}
-.how{padding:60px 20px;text-align:center;background:#0f0f0f}
-.how h2{font-size:2rem;margin-bottom:40px}
-.steps{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;max-width:900px;margin:0 auto}
-.step{background:#1a1a1a;border-radius:16px;padding:30px;flex:1;min-width:200px;max-width:220px}
-.step-num{font-size:2.5rem;margin-bottom:12px}
-.step h3{color:#00c853;margin-bottom:8px}
-.step p{color:#888;font-size:14px;line-height:1.6}
-.features{padding:60px 20px;text-align:center}
-.features h2{font-size:2rem;margin-bottom:40px}
-.feat-grid{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;max-width:800px;margin:0 auto}
-.feat{background:#1a1a1a;border-radius:12px;padding:24px;flex:1;min-width:180px;text-align:left}
-.feat-icon{font-size:2rem;margin-bottom:10px}
-.feat h3{margin-bottom:6px;font-size:1rem}
-.feat p{color:#888;font-size:13px;line-height:1.5}
-.cta{text-align:center;padding:60px 20px;background:#0f0f0f}
-.cta h2{font-size:2rem;margin-bottom:16px}
-.cta p{color:#888;margin-bottom:30px}
-footer{text-align:center;padding:30px 20px;border-top:1px solid #1a1a1a;color:#555;font-size:13px}
+.btn-main{background:linear-gradient(135deg,#00c853,#00a846);color:#fff;padding:18px 36px;border-radius:12px;font-size:1.1rem;font-weight:700;text-decoration:none;box-shadow:0 4px 20px rgba(0,200,83,0.4);transition:transform 0.2s}
+.btn-main:hover{transform:translateY(-2px)}
+.btn-sec{background:transparent;color:#fff;padding:18px 36px;border-radius:12px;font-size:1.1rem;font-weight:700;text-decoration:none;border:2px solid #333}
+.btn-sec:hover{border-color:#00c853;color:#00c853}
+
+/* STATS */
+.stats-bar{display:flex;gap:0;justify-content:center;background:#111;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;flex-wrap:wrap}
+.stat-item{padding:24px 40px;text-align:center;border-right:1px solid #1a1a1a}
+.stat-item:last-child{border-right:none}
+.stat-num{font-size:2rem;font-weight:800;background:linear-gradient(135deg,#00c853,#ffd600);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-label{font-size:12px;color:#666;margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+
+/* HOW */
+.how{padding:80px 20px;text-align:center;background:#0a0a0a}
+.section-badge{display:inline-block;background:#1a1a1a;color:#00c853;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:16px;letter-spacing:1px;border:1px solid #00c853}
+.how h2{font-size:2.5rem;font-weight:800;margin-bottom:50px}
+.steps{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;max-width:900px;margin:0 auto}
+.step{background:#111;border-radius:20px;padding:32px 24px;flex:1;min-width:180px;max-width:210px;border:1px solid #1a1a1a;transition:border 0.2s}
+.step:hover{border-color:#00c853}
+.step-num{font-size:3rem;margin-bottom:16px}
+.step h3{color:#00c853;margin-bottom:8px;font-size:1rem}
+.step p{color:#666;font-size:13px;line-height:1.6}
+
+/* FEATURES */
+.features{padding:80px 20px;background:#0d0d0d}
+.features h2{font-size:2.5rem;font-weight:800;margin-bottom:50px;text-align:center}
+.feat-grid{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;max-width:900px;margin:0 auto}
+.feat{background:#111;border-radius:20px;padding:28px;flex:1;min-width:180px;border:1px solid #1a1a1a;transition:all 0.2s}
+.feat:hover{border-color:#ffd600;transform:translateY(-4px)}
+.feat-icon{font-size:2.5rem;margin-bottom:12px}
+.feat h3{margin-bottom:8px;font-size:1rem;color:#fff}
+.feat p{color:#666;font-size:13px;line-height:1.6}
+
+/* CTA */
+.cta{text-align:center;padding:80px 20px;background:linear-gradient(135deg,#0a1f0a,#1a0a00)}
+.cta h2{font-size:2.5rem;font-weight:800;margin-bottom:16px}
+.cta h2 span{background:linear-gradient(135deg,#00c853,#ffd600,#ff6d00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cta p{color:#888;margin-bottom:30px;font-size:1.1rem}
+
+/* FOOTER */
+footer{text-align:center;padding:30px 20px;border-top:1px solid #1a1a1a;color:#444;font-size:13px;background:#050505}
 footer a{color:#00c853;text-decoration:none;margin:0 10px}
+footer a:hover{color:#ffd600}
 </style>
 </head>
 <body>
@@ -55,85 +81,120 @@ footer a{color:#00c853;text-decoration:none;margin:0 10px}
 <nav>
   <a href="/"><img src="/tms-logo.png" alt="TMS"></a>
   <div>
+    <a href="/about.html">About</a>
     <a href="/app/">Login</a>
-    <a href="/app/" class="btn">Get Started</a>
+    <a href="/app/" class="btn-nav">Get Started 🚀</a>
   </div>
 </nav>
 
 <section class="hero">
-  <h1>Discover what people<br><span>really think about you</span></h1>
-  <p>Receive anonymous messages from anyone. Share your unique link and let people speak freely!</p>
+  <div class="hero-badge">🐱‍👤 100% ANONYMOUS</div>
+  <h1>
+    <div class="line1">Discover what people</div>
+    <div class="line2">really think about you</div>
+  </h1>
+  <p>Receive anonymous messages from anyone. Share your unique link and let people speak freely — nobody will ever know it was them!</p>
   <div class="hero-btns">
     <a href="/app/" class="btn-main">Create my account 🚀</a>
-    <a href="/privacy.html" class="btn-sec">Learn more</a>
+    <a href="/about.html" class="btn-sec">Learn more</a>
   </div>
 </section>
 
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Anonymous</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">Free</div>
+    <div class="stat-label">Forever</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">⚡</div>
+    <div class="stat-label">Real-time</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">🌍</div>
+    <div class="stat-label">Worldwide</div>
+  </div>
+</div>
+
 <section class="how">
-  <h2>How does it work?</h2>
+  <div class="section-badge">HOW IT WORKS</div>
+  <h2>Simple. Fast. Anonymous.</h2>
   <div class="steps">
     <div class="step">
       <div class="step-num">1️⃣</div>
       <h3>Create account</h3>
-      <p>Sign up for free in seconds</p>
+      <p>Sign up for free in seconds — no credit card needed</p>
     </div>
     <div class="step">
       <div class="step-num">2️⃣</div>
       <h3>Get your link</h3>
-      <p>Get your unique personal link</p>
+      <p>Get your unique personal link to share</p>
     </div>
     <div class="step">
       <div class="step-num">3️⃣</div>
       <h3>Share it</h3>
-      <p>Share on X, Instagram, WhatsApp...</p>
+      <p>Post on X, Instagram, WhatsApp, TikTok...</p>
     </div>
     <div class="step">
       <div class="step-num">4️⃣</div>
       <h3>Receive messages</h3>
-      <p>Get anonymous messages from anyone!</p>
+      <p>Get honest anonymous messages instantly!</p>
     </div>
   </div>
 </section>
 
 <section class="features">
-  <h2>Why Tell Me Something?</h2>
+  <h2>Why choose TMS?</h2>
   <div class="feat-grid">
     <div class="feat">
       <div class="feat-icon">🔒</div>
       <h3>100% Anonymous</h3>
-      <p>Nobody will ever know who sent the message</p>
+      <p>Nobody will ever know who sent the message — not even us!</p>
     </div>
     <div class="feat">
       <div class="feat-icon">⚡</div>
-      <h3>Instant</h3>
-      <p>Messages arrive in real time</p>
+      <h3>Real-time</h3>
+      <p>Messages arrive instantly — no waiting!</p>
     </div>
     <div class="feat">
       <div class="feat-icon">🌍</div>
       <h3>Multilingual</h3>
-      <p>Available in French, English, Arabic and more</p>
+      <p>Available in English, French, Arabic, Spanish and more</p>
     </div>
     <div class="feat">
       <div class="feat-icon">💚</div>
-      <h3>Free</h3>
-      <p>100% free, no hidden fees</p>
+      <h3>100% Free</h3>
+      <p>No hidden fees, no premium plans needed</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">📱</div>
+      <h3>Mobile friendly</h3>
+      <p>Works perfectly on any device — phone, tablet or PC</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🔔</div>
+      <h3>Notifications</h3>
+      <p>Get email alerts when you receive a new message</p>
     </div>
   </div>
 </section>
 
 <section class="cta">
-  <h2>Ready to start?</h2>
-  <p>Join thousands of users and discover what people think about you!</p>
+  <h2>Ready to find out <span>the truth?</span></h2>
+  <p>Join thousands of users and discover what people really think about you!</p>
   <a href="/app/" class="btn-main">Create my free account 🚀</a>
 </section>
 
 <footer>
-  <p>© 2026 Tell Me Something</p>
-  <br>
+  <p>© 2026 Tell Me Something — The anonymous messaging platform</p><br>
   <a href="/app/">App</a>
+  <a href="/about.html">About</a>
   <a href="/privacy.html">Privacy Policy</a>
   <a href="/terms.html">Terms of Service</a>
 </footer>
 
 </body>
-</html>rebuild
+</html>
