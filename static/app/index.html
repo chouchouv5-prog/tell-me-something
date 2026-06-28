@@ -242,7 +242,6 @@ function closeMsgPopup() {
 
 async function deleteMsgFromPopup() {
   const id = document.getElementById('msgPopupId').value;
-  if (!confirm('Delete this message ?')) return;
   await sb.from('messages').delete().eq('id', id);
   closeMsgPopup();
   await loadMessages();
