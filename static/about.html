@@ -9,28 +9,46 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI',sans-serif;background:#0a0a0a;color:#fff;min-height:100vh}
-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 30px;border-bottom:1px solid #1a1a1a}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 30px;background:rgba(0,0,0,0.9);position:sticky;top:0;z-index:100;border-bottom:2px solid #00c853}
 nav img{height:50px}
-nav a{color:#fff;text-decoration:none;margin-left:20px;font-size:14px}
+nav a{color:#fff;text-decoration:none;margin-left:20px;font-size:14px;font-weight:600}
 nav a:hover{color:#00c853}
-.btn{background:#00c853;color:#fff!important;padding:10px 20px;border-radius:8px;font-weight:600}
+.btn-nav{background:linear-gradient(135deg,#00c853,#ffd600);color:#000!important;padding:10px 20px;border-radius:8px;font-weight:700}
+
+/* HERO */
+.page-hero{text-align:center;padding:70px 20px 50px;background:linear-gradient(180deg,#0a0a0a 0%,#0d1f0d 100%)}
+.hero-badge{display:inline-block;background:linear-gradient(135deg,#00c853,#ffd600);color:#000;padding:8px 20px;border-radius:20px;font-size:13px;font-weight:700;margin-bottom:20px;letter-spacing:1px}
+.page-hero h1{font-size:2.8rem;font-weight:900;margin-bottom:12px}
+.page-hero h1 span{background:linear-gradient(135deg,#00c853,#ffd600,#ff6d00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.page-hero p{color:#aaa;font-size:1.1rem;max-width:500px;margin:0 auto}
+
+/* CONTENT */
 .container{max-width:800px;margin:0 auto;padding:60px 20px}
-h1{font-size:2.5rem;color:#00c853;margin-bottom:16px;text-align:center}
-.subtitle{text-align:center;color:#888;margin-bottom:60px;font-size:1.1rem}
-.card{background:#1a1a1a;border-radius:16px;padding:30px;margin-bottom:24px}
-h2{font-size:1.3rem;color:#00c853;margin-bottom:16px}
+.card{background:#111;border-radius:16px;padding:30px;margin-bottom:24px;border:1px solid #1f2e1f;transition:border 0.2s}
+.card:hover{border-color:#00c853}
+h2{font-size:1.3rem;font-weight:700;margin-bottom:14px;background:linear-gradient(135deg,#00c853,#ffd600);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 p{color:#ccc;line-height:1.8;margin-bottom:12px}
-.team{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-top:40px}
-.member{background:#1a1a1a;border-radius:16px;padding:24px;text-align:center;width:200px}
-.avatar{width:80px;height:80px;background:#00c853;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 12px}
-.member h3{margin-bottom:4px}
-.member p{font-size:13px;color:#888}
-.stats-grid{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:30px 0}
-.stat{background:#2a2a2a;border-radius:12px;padding:20px;text-align:center;flex:1;min-width:120px}
-.stat-num{font-size:2rem;font-weight:700;color:#00c853}
-.stat-label{font-size:12px;color:#888;margin-top:4px}
-footer{text-align:center;padding:30px;border-top:1px solid #1a1a1a;color:#555;font-size:13px;margin-top:60px}
+
+/* FEATURES GRID */
+.feat-grid{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:20px 0}
+.feat{background:#1a1a1a;border-radius:16px;padding:24px;flex:1;min-width:150px;text-align:center;border:1px solid #1f2e1f;transition:all 0.2s}
+.feat:hover{border-color:#ffd600;transform:translateY(-3px)}
+.feat-icon{font-size:2.2rem;margin-bottom:10px}
+.feat h3{font-size:13px;color:#00c853;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+
+/* CTA */
+.cta-wrap{text-align:center;margin-top:50px;padding:50px 20px;background:linear-gradient(135deg,#0a1f0a,#1a0a00);border-radius:20px}
+.cta-wrap h2{font-size:2rem;font-weight:800;margin-bottom:12px;-webkit-text-fill-color:#fff}
+.cta-wrap p{color:#888;margin-bottom:24px}
+.btn-main{display:inline-block;background:linear-gradient(135deg,#00c853,#00a846);color:#fff;padding:16px 32px;border-radius:12px;font-size:1rem;font-weight:700;text-decoration:none;box-shadow:0 4px 20px rgba(0,200,83,0.35);transition:transform 0.2s}
+.btn-main:hover{transform:translateY(-2px)}
+
+/* FOOTER */
+footer{text-align:center;padding:30px 20px;border-top:1px solid #1a1a1a;color:#444;font-size:13px;background:#050505;margin-top:60px}
 footer a{color:#00c853;text-decoration:none;margin:0 10px}
+footer a:hover{color:#ffd600}
 </style>
 </head>
 <body>
@@ -38,17 +56,22 @@ footer a{color:#00c853;text-decoration:none;margin:0 10px}
 <nav>
   <a href="/"><img src="/tms-logo.png" alt="TMS"></a>
   <div>
+    <a href="/about.html">About</a>
     <a href="/app/">Login</a>
-    <a href="/app/" class="btn">Get Started</a>
+    <a href="/app/" class="btn-nav">Get Started 🚀</a>
   </div>
 </nav>
 
+<div class="page-hero">
+  <div class="hero-badge">🐱‍👤 ABOUT TMS</div>
+  <h1>What is <span>Tell Me Something?</span></h1>
+  <p>The anonymous messaging platform that lets people speak freely and honestly.</p>
+</div>
+
 <div class="container">
-  <h1>🐱‍👤 About TMS</h1>
-  <p class="subtitle">The anonymous messaging platform that lets people speak freely</p>
 
   <div class="card">
-    <h2>What is Tell Me Something?</h2>
+    <h2>🌍 Our Mission</h2>
     <p>Tell Me Something (TMS) is a free anonymous messaging platform. Create your account, get your unique link, share it on social media, and receive honest anonymous messages from anyone!</p>
     <p>We believe in honest communication. Sometimes people have things to say but are afraid to say them publicly. TMS gives everyone a safe space to express themselves freely.</p>
   </div>
@@ -60,24 +83,14 @@ footer a{color:#00c853;text-decoration:none;margin:0 10px}
   </div>
 
   <div class="card">
-    <h2>⚡ Our features</h2>
-    <div class="stats-grid">
-      <div class="stat">
-        <div class="stat-num">🐱‍👤</div>
-        <div class="stat-label">100% Anonymous</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">⚡</div>
-        <div class="stat-label">Real-time</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">🌍</div>
-        <div class="stat-label">Multilingual</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">💚</div>
-        <div class="stat-label">Free forever</div>
-      </div>
+    <h2>⚡ Features</h2>
+    <div class="feat-grid">
+      <div class="feat"><div class="feat-icon">🐱‍👤</div><h3>100% Anonymous</h3></div>
+      <div class="feat"><div class="feat-icon">⚡</div><h3>Real-time</h3></div>
+      <div class="feat"><div class="feat-icon">🌍</div><h3>Multilingual</h3></div>
+      <div class="feat"><div class="feat-icon">💚</div><h3>Free forever</h3></div>
+      <div class="feat"><div class="feat-icon">📱</div><h3>Mobile friendly</h3></div>
+      <div class="feat"><div class="feat-icon">🔔</div><h3>Notifications</h3></div>
     </div>
   </div>
 
@@ -87,15 +100,16 @@ footer a{color:#00c853;text-decoration:none;margin:0 10px}
     <p>Email: <a href="mailto:tellmesomething.app@gmail.com" style="color:#00c853">tellmesomething.app@gmail.com</a></p>
   </div>
 
-  <div style="text-align:center;margin-top:40px">
-    <a href="/app/" style="background:#00c853;color:#fff;padding:16px 32px;border-radius:10px;font-size:1.1rem;font-weight:700;text-decoration:none">
-      Create my free account 🚀
-    </a>
+  <div class="cta-wrap">
+    <h2>Ready to get started?</h2>
+    <p>Join thousands of users and discover what people really think about you!</p>
+    <a href="/app/" class="btn-main">Create my free account 🚀</a>
   </div>
+
 </div>
 
 <footer>
-  <p>© 2026 Tell Me Something</p><br>
+  <p>© 2026 Tell Me Something — The anonymous messaging platform</p><br>
   <a href="/">Home</a>
   <a href="/about.html">About</a>
   <a href="/privacy.html">Privacy Policy</a>

@@ -9,70 +9,121 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI',sans-serif;background:#0a0a0a;color:#fff;min-height:100vh}
-.container{max-width:800px;margin:0 auto;padding:40px 20px}
-.logo{text-align:center;margin-bottom:30px}
-.logo img{height:60px}
-h1{font-size:2rem;color:#00c853;margin-bottom:8px;text-align:center}
-.date{text-align:center;color:#888;margin-bottom:40px;font-size:14px}
-h2{font-size:1.2rem;color:#00c853;margin:30px 0 10px}
-p{color:#ccc;line-height:1.8;margin-bottom:14px}
-ul{color:#ccc;line-height:1.8;margin-left:20px;margin-bottom:14px}
-.footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #222}
-.footer a{color:#00c853;text-decoration:none;margin:0 10px}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 30px;background:rgba(0,0,0,0.9);position:sticky;top:0;z-index:100;border-bottom:2px solid #00c853}
+nav img{height:50px}
+nav a{color:#fff;text-decoration:none;margin-left:20px;font-size:14px;font-weight:600}
+nav a:hover{color:#00c853}
+.btn-nav{background:linear-gradient(135deg,#00c853,#ffd600);color:#000!important;padding:10px 20px;border-radius:8px;font-weight:700}
+
+/* PAGE HERO */
+.page-hero{text-align:center;padding:60px 20px 40px;background:linear-gradient(180deg,#0a0a0a 0%,#0d1f0d 100%)}
+.hero-badge{display:inline-block;background:linear-gradient(135deg,#00c853,#ffd600);color:#000;padding:8px 20px;border-radius:20px;font-size:13px;font-weight:700;margin-bottom:20px;letter-spacing:1px}
+.page-hero h1{font-size:2.5rem;font-weight:900;margin-bottom:10px}
+.page-hero p{color:#888;font-size:14px}
+
+/* CONTENT */
+.container{max-width:800px;margin:0 auto;padding:50px 20px}
+.card{background:#111;border-radius:16px;padding:30px;margin-bottom:20px;border:1px solid #1f2e1f}
+h2{font-size:1.1rem;font-weight:700;margin-bottom:12px;color:#00c853}
+p{color:#ccc;line-height:1.8;margin-bottom:12px}
+ul{color:#ccc;line-height:1.8;margin-left:20px;margin-bottom:12px}
+ul li{margin-bottom:4px}
+a{color:#00c853;text-decoration:none}
+a:hover{color:#ffd600}
+
+/* FOOTER */
+footer{text-align:center;padding:30px 20px;border-top:1px solid #1a1a1a;color:#444;font-size:13px;background:#050505;margin-top:60px}
+footer a{color:#00c853;text-decoration:none;margin:0 10px}
+footer a:hover{color:#ffd600}
 </style>
 </head>
 <body>
-<div class="container">
-  <div class="logo">
-    <a href="/app/"><img src="/tms-logo.png" alt="TMS"></a>
+
+<nav>
+  <a href="/"><img src="/tms-logo.png" alt="TMS"></a>
+  <div>
+    <a href="/about.html">About</a>
+    <a href="/app/">Login</a>
+    <a href="/app/" class="btn-nav">Get Started 🚀</a>
   </div>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-badge">📋 LEGAL</div>
   <h1>Terms of Service</h1>
-  <p class="date">Last updated: June 2026</p>
-
-  <h2>1. Acceptance of Terms</h2>
-  <p>By using Tell Me Something ("TMS"), you agree to these Terms of Service. If you do not agree, please do not use our service.</p>
-
-  <h2>2. Description of Service</h2>
-  <p>TMS is a platform that allows users to receive anonymous messages from others. Each user gets a unique link to share with others.</p>
-
-  <h2>3. User Responsibilities</h2>
-  <ul>
-    <li>You must be at least 13 years old to use TMS</li>
-    <li>You are responsible for keeping your account secure</li>
-    <li>You must not use TMS to send harmful, abusive, or illegal content</li>
-    <li>You must not use TMS to harass or bully others</li>
-  </ul>
-
-  <h2>4. Prohibited Content</h2>
-  <p>The following content is strictly prohibited on TMS:</p>
-  <ul>
-    <li>Hate speech or discrimination</li>
-    <li>Harassment or bullying</li>
-    <li>Illegal content of any kind</li>
-    <li>Spam or advertising</li>
-    <li>Personal information of others without consent</li>
-  </ul>
-
-  <h2>5. Anonymous Messages</h2>
-  <p>TMS does not reveal the identity of message senders. However, we reserve the right to cooperate with law enforcement if required by law.</p>
-
-  <h2>6. Account Termination</h2>
-  <p>We reserve the right to terminate accounts that violate these terms without prior notice.</p>
-
-  <h2>7. Disclaimer</h2>
-  <p>TMS is provided "as is" without any warranties. We are not responsible for the content of anonymous messages sent through our platform.</p>
-
-  <h2>8. Changes to Terms</h2>
-  <p>We may update these terms at any time. Continued use of TMS after changes means you accept the new terms.</p>
-
-  <h2>9. Contact</h2>
-  <p>For any questions about these terms, contact us at: <a href="mailto:chouchouv5@gmail.com" style="color:#00c853">chouchouv5@gmail.com</a></p>
-
-  <div class="footer">
-    <a href="/app/">Home</a>
-    <a href="/terms.html">Terms of Service</a>
-    <a href="/privacy.html">Privacy Policy</a>
-  </div>
+  <p>Last updated: June 2026</p>
 </div>
+
+<div class="container">
+
+  <div class="card">
+    <h2>1. Acceptance of Terms</h2>
+    <p>By using Tell Me Something ("TMS"), you agree to these Terms of Service. If you do not agree, please do not use our service.</p>
+  </div>
+
+  <div class="card">
+    <h2>2. Description of Service</h2>
+    <p>TMS is a platform that allows users to receive anonymous messages from others. Each user gets a unique link to share with others.</p>
+  </div>
+
+  <div class="card">
+    <h2>3. User Responsibilities</h2>
+    <ul>
+      <li>You must be at least 13 years old to use TMS</li>
+      <li>You are responsible for keeping your account secure</li>
+      <li>You must not use TMS to send harmful, abusive, or illegal content</li>
+      <li>You must not use TMS to harass or bully others</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>4. Prohibited Content</h2>
+    <p>The following content is strictly prohibited on TMS:</p>
+    <ul>
+      <li>Hate speech or discrimination</li>
+      <li>Harassment or bullying</li>
+      <li>Illegal content of any kind</li>
+      <li>Spam or advertising</li>
+      <li>Personal information of others without consent</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>5. Anonymous Messages</h2>
+    <p>TMS does not reveal the identity of message senders. However, we reserve the right to cooperate with law enforcement if required by law.</p>
+  </div>
+
+  <div class="card">
+    <h2>6. Account Termination</h2>
+    <p>We reserve the right to terminate accounts that violate these terms without prior notice.</p>
+  </div>
+
+  <div class="card">
+    <h2>7. Disclaimer</h2>
+    <p>TMS is provided "as is" without any warranties. We are not responsible for the content of anonymous messages sent through our platform.</p>
+  </div>
+
+  <div class="card">
+    <h2>8. Changes to Terms</h2>
+    <p>We may update these terms at any time. Continued use of TMS after changes means you accept the new terms.</p>
+  </div>
+
+  <div class="card">
+    <h2>9. Contact</h2>
+    <p>For any questions about these terms, contact us at: <a href="mailto:tellmesomething.app@gmail.com">tellmesomething.app@gmail.com</a></p>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Tell Me Something — The anonymous messaging platform</p><br>
+  <a href="/">Home</a>
+  <a href="/about.html">About</a>
+  <a href="/privacy.html">Privacy Policy</a>
+  <a href="/terms.html">Terms of Service</a>
+</footer>
+
 </body>
 </html>

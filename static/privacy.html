@@ -9,66 +9,117 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI',sans-serif;background:#0a0a0a;color:#fff;min-height:100vh}
-.container{max-width:800px;margin:0 auto;padding:40px 20px}
-.logo{text-align:center;margin-bottom:30px}
-.logo img{height:60px}
-h1{font-size:2rem;color:#00c853;margin-bottom:8px;text-align:center}
-.date{text-align:center;color:#888;margin-bottom:40px;font-size:14px}
-h2{font-size:1.2rem;color:#00c853;margin:30px 0 10px}
-p{color:#ccc;line-height:1.8;margin-bottom:14px}
-ul{color:#ccc;line-height:1.8;margin-left:20px;margin-bottom:14px}
-.footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #222}
-.footer a{color:#00c853;text-decoration:none;margin:0 10px}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 30px;background:rgba(0,0,0,0.9);position:sticky;top:0;z-index:100;border-bottom:2px solid #00c853}
+nav img{height:50px}
+nav a{color:#fff;text-decoration:none;margin-left:20px;font-size:14px;font-weight:600}
+nav a:hover{color:#00c853}
+.btn-nav{background:linear-gradient(135deg,#00c853,#ffd600);color:#000!important;padding:10px 20px;border-radius:8px;font-weight:700}
+
+/* PAGE HERO */
+.page-hero{text-align:center;padding:60px 20px 40px;background:linear-gradient(180deg,#0a0a0a 0%,#0d1f0d 100%)}
+.hero-badge{display:inline-block;background:linear-gradient(135deg,#00c853,#ffd600);color:#000;padding:8px 20px;border-radius:20px;font-size:13px;font-weight:700;margin-bottom:20px;letter-spacing:1px}
+.page-hero h1{font-size:2.5rem;font-weight:900;margin-bottom:10px}
+.page-hero p{color:#888;font-size:14px}
+
+/* CONTENT */
+.container{max-width:800px;margin:0 auto;padding:50px 20px}
+.card{background:#111;border-radius:16px;padding:30px;margin-bottom:20px;border:1px solid #1f2e1f}
+h2{font-size:1.1rem;font-weight:700;margin-bottom:12px;color:#00c853}
+p{color:#ccc;line-height:1.8;margin-bottom:12px}
+ul{color:#ccc;line-height:1.8;margin-left:20px;margin-bottom:12px}
+ul li{margin-bottom:4px}
+a{color:#00c853;text-decoration:none}
+a:hover{color:#ffd600}
+
+/* FOOTER */
+footer{text-align:center;padding:30px 20px;border-top:1px solid #1a1a1a;color:#444;font-size:13px;background:#050505;margin-top:60px}
+footer a{color:#00c853;text-decoration:none;margin:0 10px}
+footer a:hover{color:#ffd600}
 </style>
 </head>
 <body>
-<div class="container">
-  <div class="logo">
-    <a href="/app/"><img src="/tms-logo.png" alt="TMS"></a>
+
+<nav>
+  <a href="/"><img src="/tms-logo.png" alt="TMS"></a>
+  <div>
+    <a href="/about.html">About</a>
+    <a href="/app/">Login</a>
+    <a href="/app/" class="btn-nav">Get Started 🚀</a>
   </div>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-badge">🔒 LEGAL</div>
   <h1>Privacy Policy</h1>
-  <p class="date">Last updated: June 2026</p>
-
-  <h2>1. Introduction</h2>
-  <p>Welcome to Tell Me Something ("TMS"). We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your information when you use our website at tell-me-something.pages.dev.</p>
-
-  <h2>2. Information We Collect</h2>
-  <ul>
-    <li>Username and email address when you create an account</li>
-    <li>Anonymous messages sent through our platform</li>
-    <li>Basic usage data (pages visited, browser type)</li>
-  </ul>
-
-  <h2>3. How We Use Your Information</h2>
-  <ul>
-    <li>To provide and operate the TMS service</li>
-    <li>To send email notifications when you receive a message</li>
-    <li>To improve our service</li>
-  </ul>
-
-  <h2>4. Anonymous Messages</h2>
-  <p>Messages sent through TMS are anonymous — we do not store the identity of message senders. Only the recipient can read their messages.</p>
-
-  <h2>5. Data Storage</h2>
-  <p>Your data is stored securely using Supabase. We do not sell your personal information to third parties.</p>
-
-  <h2>6. Cookies</h2>
-  <p>We use cookies to keep you logged in and to serve advertisements through Google AdSense. You can disable cookies in your browser settings.</p>
-
-  <h2>7. Google AdSense</h2>
-  <p>We use Google AdSense to display advertisements. Google may use cookies to serve ads based on your visits to our site. You can opt out at <a href="https://www.google.com/settings/ads" style="color:#00c853">google.com/settings/ads</a>.</p>
-
-  <h2>8. Children's Privacy</h2>
-  <p>TMS is not intended for users under 13 years of age. We do not knowingly collect data from children.</p>
-
-  <h2>9. Contact Us</h2>
-  <p>If you have any questions about this Privacy Policy, contact us at: <a href="mailto:tellmesomething.app@gmail.com" style="color:#00c853">chouchouv5@gmail.com</a></p>
-
-  <div class="footer">
-    <a href="/app/">Home</a>
-    <a href="/terms.html">Terms of Service</a>
-    <a href="/privacy.html">Privacy Policy</a>
-  </div>
+  <p>Last updated: June 2026</p>
 </div>
+
+<div class="container">
+
+  <div class="card">
+    <h2>1. Introduction</h2>
+    <p>Welcome to Tell Me Something ("TMS"). We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your information when you use our website at tell-me-something.pages.dev.</p>
+  </div>
+
+  <div class="card">
+    <h2>2. Information We Collect</h2>
+    <ul>
+      <li>Username and email address when you create an account</li>
+      <li>Anonymous messages sent through our platform</li>
+      <li>Basic usage data (pages visited, browser type)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>3. How We Use Your Information</h2>
+    <ul>
+      <li>To provide and operate the TMS service</li>
+      <li>To send email notifications when you receive a message</li>
+      <li>To improve our service</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>4. Anonymous Messages</h2>
+    <p>Messages sent through TMS are anonymous — we do not store the identity of message senders. Only the recipient can read their messages.</p>
+  </div>
+
+  <div class="card">
+    <h2>5. Data Storage</h2>
+    <p>Your data is stored securely using Supabase. We do not sell your personal information to third parties.</p>
+  </div>
+
+  <div class="card">
+    <h2>6. Cookies</h2>
+    <p>We use cookies to keep you logged in and to serve advertisements through Google AdSense. You can disable cookies in your browser settings.</p>
+  </div>
+
+  <div class="card">
+    <h2>7. Google AdSense</h2>
+    <p>We use Google AdSense to display advertisements. Google may use cookies to serve ads based on your visits to our site. You can opt out at <a href="https://www.google.com/settings/ads">google.com/settings/ads</a>.</p>
+  </div>
+
+  <div class="card">
+    <h2>8. Children's Privacy</h2>
+    <p>TMS is not intended for users under 13 years of age. We do not knowingly collect data from children.</p>
+  </div>
+
+  <div class="card">
+    <h2>9. Contact Us</h2>
+    <p>If you have any questions about this Privacy Policy, contact us at: <a href="mailto:tellmesomething.app@gmail.com">tellmesomething.app@gmail.com</a></p>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Tell Me Something — The anonymous messaging platform</p><br>
+  <a href="/">Home</a>
+  <a href="/about.html">About</a>
+  <a href="/privacy.html">Privacy Policy</a>
+  <a href="/terms.html">Terms of Service</a>
+</footer>
+
 </body>
 </html>
