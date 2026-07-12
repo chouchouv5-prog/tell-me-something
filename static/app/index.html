@@ -170,6 +170,23 @@ input[type="text"]:focus,input[type="email"]:focus{border-color:#00c853}
         <span class="eye" onclick="togglePass('loginPassword')">👁</span>
       </div>
       <button class="btn-primary" onclick="login()">Log in</button>
+      <p style="text-align:center;margin-top:14px;font-size:13px;color:#555">
+        Forgot your password? <a href="#" onclick="showTab('forgot')" style="color:#00c853;text-decoration:none;font-weight:600">Reset it here</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- FORGOT PASSWORD -->
+  <div id="forgot" class="hidden">
+    <div class="card">
+      <div class="section-title"><span>🔐</span> Reset password</div>
+      <p style="color:#888;font-size:14px;margin-bottom:16px">Enter your email address and we'll send you a reset link.</p>
+      <div id="forgotAlert"></div>
+      <input type="email" id="forgotEmail" placeholder="Your email address" />
+      <button class="btn-primary" onclick="sendResetEmail()">Send reset link 📧</button>
+      <p style="text-align:center;margin-top:14px;font-size:13px;color:#555">
+        <a href="#" onclick="showTab('login')" style="color:#00c853;text-decoration:none;font-weight:600">← Back to login</a>
+      </p>
     </div>
   </div>
 
@@ -225,11 +242,29 @@ function togglePass(id) {
 }
 
 function showTab(tab) {
-  ['home','signup','login','inbox'].forEach(t => {
+  ['home','signup','login','forgot','inbox'].forEach(t => {
     document.getElementById(t).classList.add('hidden');
   });
   document.getElementById(tab).classList.remove('hidden');
   document.querySelectorAll('.tab button').forEach(b => b.classList.remove('active'));
+}
+
+async function sendResetEmail() {
+  const email = document.getElementById('forgotEmail').value.trim();
+  const alertEl = document.getElementById('forgotAlert');
+  if (!email) {
+    alertEl.innerHTML = '<div class="alert alert-error">Please enter your email address!</div>';
+    return;
+  }
+  const { error } = await sb.auth.resetPasswordForEmail(email, {
+    redirectTo: 'https://tell-me-something.pages.dev/reset-password.html'
+  });
+  if (error) {
+    alertEl.innerHTML = '<div class="alert alert-error">Error. Check your email and try again.</div>';
+  } else {
+    alertEl.innerHTML = '<div class="alert alert-success">✅ Email sent! Check your inbox and click the link to reset your password.</div>';
+    document.getElementById('forgotEmail').value = '';
+  }
 }
 
 async function signup() {
