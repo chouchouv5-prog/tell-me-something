@@ -97,10 +97,10 @@ input[type="text"]:focus,input[type="email"]:focus{border-color:#00c853}
 /* POPUP */
 .popup-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:100;align-items:center;justify-content:center}
 .popup-overlay.active{display:flex}
-.popup{background:#111;border:1px solid #1f2e1f;border-radius:20px;padding:30px;max-width:400px;width:90%;text-align:center;animation:popIn 0.3s ease}
+.popup{background:#111;border:1px solid #1f2e1f;border-radius:20px;padding:30px;max-width:480px;width:95%;text-align:center;animation:popIn 0.3s ease;max-height:90vh;overflow-y:auto}
 @keyframes popIn{from{transform:scale(0.8);opacity:0}to{transform:scale(1);opacity:1}}
 .popup-emoji{font-size:50px;margin-bottom:16px}
-.popup-text{font-size:16px;line-height:1.7;color:#fff;margin-bottom:20px;text-align:left;background:#1a1a1a;padding:16px;border-radius:10px;border:1px solid #1f2e1f}
+.popup-text{font-size:16px;line-height:1.7;color:#fff;margin-bottom:20px;text-align:left;background:#1a1a1a;padding:16px;border-radius:10px;border:1px solid #1f2e1f;max-height:50vh;overflow-y:auto;word-break:break-word;white-space:pre-wrap}
 .popup-btn{width:100%;padding:14px;background:linear-gradient(135deg,#00c853,#00a846);color:#fff;border:none;border-radius:10px;font-size:16px;cursor:pointer;font-weight:700;margin-bottom:8px;box-shadow:0 4px 16px rgba(0,200,83,0.3)}
 .popup-btn2{width:100%;padding:12px;background:#2e0a0a;color:#fca5a5;border:none;border-radius:10px;font-size:14px;cursor:pointer;font-weight:600}
 
