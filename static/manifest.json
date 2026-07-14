@@ -3,40 +3,31 @@
   "short_name": "TMS",
   "description": "Receive anonymous messages from anyone. 100% free and secret!",
   "start_url": "/app/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#0a0a0a",
   "theme_color": "#00c853",
   "orientation": "portrait-primary",
   "lang": "en",
   "icons": [
-    {
-      "src": "/tms-logo.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/tms-logo.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
+    { "src": "/favicon-32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "/icon-72.png",    "sizes": "72x72",  "type": "image/png" },
+    { "src": "/icon-96.png",    "sizes": "96x96",  "type": "image/png" },
+    { "src": "/icon-144.png",   "sizes": "144x144","type": "image/png", "purpose": "any" },
+    { "src": "/icon-192.png",   "sizes": "192x192","type": "image/png", "purpose": "any maskable" },
+    { "src": "/icon-512.png",   "sizes": "512x512","type": "image/png", "purpose": "any maskable" }
   ],
   "screenshots": [
-    {
-      "src": "/og-image.png",
-      "sizes": "1200x630",
-      "type": "image/png"
-    }
+    { "src": "/og-image.png", "sizes": "1200x630", "type": "image/png", "form_factor": "wide" }
   ],
   "categories": ["social", "communication"],
   "shortcuts": [
     {
       "name": "My messages",
       "short_name": "Inbox",
-      "description": "Go to your inbox",
+      "description": "Open your inbox",
       "url": "/app/",
-      "icons": [{ "src": "/tms-logo.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     }
   ]
 }
