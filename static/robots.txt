@@ -1,0 +1,15 @@
+# Tell Me Something - robots.txt
+User-agent: *
+Allow: /
+Allow: /about.html
+Allow: /privacy.html
+Allow: /terms.html
+Allow: /app/
+
+# Bloquer les pages privées
+Disallow: /reset-password.html
+Disallow: /app/u/
+Disallow: /app/profile/
+
+# Sitemap
+Sitemap: https://tell-me-something.pages.dev/sitemap.xml
